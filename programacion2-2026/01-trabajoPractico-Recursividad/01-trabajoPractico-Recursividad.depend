@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1775875144 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.c
+1775875864 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.c
 	"tp_1_recursividad.h"
 	"../libs/validaciones/headers/funciones.h"
 	<stdlib.h>
@@ -10,7 +10,7 @@
 1775869264 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.h
 	<stdbool.h>
 
-1775873942 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones.c
+1775875714 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -24,10 +24,10 @@
 	"../libs/validaciones/headers/funciones.h"
 	"../libs/validaciones/headers/validaciones.h"
 
-1775874961 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones.h
+1775875554 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones.h
 	<stdbool.h>
 
-1775875332 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones.c
+1775875906 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones.c
 	"../headers/funciones.h"
 	"../headers/validaciones.h"
 	"../../../01-trabajoPractico-Recursividad/tp_1_recursividad.h"

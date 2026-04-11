@@ -25,3 +25,4 @@ void encontrarSubconjuntos(int conjunto[], int tamano, int indiceActual, int sum
 void ejercicio9();
 
 void ejercicio10();
+void explosionRec(int n, int b, int *resultado, int *pos);

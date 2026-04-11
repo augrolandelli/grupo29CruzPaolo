@@ -237,8 +237,32 @@ void ejercicio9(){
     }
 }
 
-
+//Ejercicio 10
 void ejercicio10(){
-    printf("\nBienvenido al ejercicio numero 10.\n");
-    printf("\nNot implemented.\n");
+    int n, b;
+    printf("Bienvenido al ejercicio del numero explosivo!.\n");
+    n = pedirNumeroNatural("Ingrese el numero: ");
+    if (n <= 2) {
+        printf("El numero es muy chico para explotar significativamente.\n");
+        return;
+    }
+    b = enteroEnRango(2,n-1);
+
+    int *resultado = explosion(n, b);
+    printf("[");
+    for (int i = 0; i < 100 && resultado[i] != 0; i++) {
+        printf(" %d ", resultado[i]);
+    }
+    printf("]\n\n");
+    free(resultado);
+}
+void explosionRec(int n, int b, int *resultado, int *pos) {
+    if (n <= b) {
+        resultado[(*pos)++] = n;
+    } else {
+        int n1 = n / b;
+        int n2 = n - n1;
+        explosionRec(n1, b, resultado, pos);
+        explosionRec(n2, b, resultado, pos);
+    }
 }
