@@ -12,4 +12,14 @@ Curso de Programación 2, Universidad Nacional de Lujan
 ## Alumnos:
 
 Apellido y Nombre // Legajo // Mails
+##### Rolandelli Augusto // 187439 // rolandelli_augus@hmail.com
+##### Cruz Paolo // 187439 // mail
+##### Valiente Nadia // 169789 // mail
+##### Guillotto Ana // 195150 // mail
+##### Vita Luciano // 200846 // mail
+##### Almar Ramiro // 203362 // mail
+##### Pastor Joel //184278 // mail
+
+
+
 
