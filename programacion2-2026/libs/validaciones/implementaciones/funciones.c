@@ -139,8 +139,12 @@ char* ondaDigitalRec(char * cadena, char * resultado,int inicio, int longitud){
 }
 
 void ejercicio7(){
-    printf("\nBienvenido al ejercicio numero 7.\n");
-    printf("\nNot implemented.\n");
+    printf("Bienvenido al ejercicio de la mafia china.\n Ingrese el nivel de la mafia para verla.\n");
+    int nivel;
+    nivel = enteroEnRango(1,100);
+    char *vista = reunionMafia(nivel);
+    printf("Nivel %d: %s\n\n", nivel, vista);
+    free(vista);
 }
 
 void ejercicio8(){

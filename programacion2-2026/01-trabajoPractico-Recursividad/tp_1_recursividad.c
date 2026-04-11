@@ -64,7 +64,7 @@ char * agregarSeparadorMiles(char numero[]){
     int puntos = ((longitud-1)/3);
     int longitudRes = (longitud + puntos);
 
-    char * res = malloc(sizeof(numero)*100);
+    char * res = malloc(sizeof(char)*100);
     agregarPuntos(numero, res, longitud-1, longitudRes-1, 0);
 
     return res;
@@ -86,4 +86,38 @@ char * ondaDigital(char seniales[]){
     char * resultado = malloc(sizeof(char) * (longitud * 2 + 1));
     resultado[0] = '\0';
     return ondaDigitalRec(seniales, resultado, 0, longitud);
+}
+
+//Ejercicio 7
+/*7.	Se conoce que la mafia china es muy organizada y protege mucho a sus miembros, cuando deciden asistir
+a una reunión se dispone de una cantidad de chinos que asisten, y ellos se ubican de forma que al mirarlos
+frontalmente generan cierto respeto y temor. A continuación, se tiene una serie de posibles reuniones y su
+nivel y la apariencia que se tiene del grupo que va a la reunión vistos frontalmente:
+
+Nivel reunión	Vista frontal de la delegación
+		1 	        (-.-)
+		2 		 (-.(-.-).-)
+		3 	  (-.(-.(-.-).-).-)
+		4  (-.(-.(-.(-.-).-).-).-)
+
+*/
+
+char * reunionMafia(int nivel){
+    if (nivel == 1) {
+        char* base = (char*)malloc(6);
+        strcpy(base, "(-.-)");
+        return base;
+    } else {
+        char* inner = reunionMafia(nivel - 1);
+        int len = strlen(inner) + 6;
+        char* result = (char*)malloc(len);
+
+        strcpy(result, "(-.");
+        strcat(result, inner);
+        strcat(result, ".-)");
+
+        free(inner);
+
+        return result;
+    }
 }
