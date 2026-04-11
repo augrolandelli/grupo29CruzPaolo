@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1775868823 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.c
+	"tp_1_recursividad.h"
+	"../libs/validaciones/headers/funciones.h"
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+
+1775835073 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.h
+	<stdbool.h>
+
+1775836687 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"../headers/validaciones.h"
+
+1775836687 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\validaciones.h
+
+1775839557 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../libs/validaciones/headers/funciones.h"
+	"../libs/validaciones/headers/validaciones.h"
+
+1775855755 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones.h
+	<stdbool.h>
+
+1775855755 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones.c
+	"../headers/funciones.h"
+	"../../../01-trabajoPractico-Recursividad/tp_1_recursividad.h"
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+

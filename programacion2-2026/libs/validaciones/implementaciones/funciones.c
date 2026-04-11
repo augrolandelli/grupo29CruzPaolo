@@ -1,0 +1,136 @@
+#include "../headers/funciones.h"
+#include "../../../01-trabajoPractico-Recursividad/tp_1_recursividad.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+
+// TP_1_RECURSIVIDAD
+
+void ejercicio1(){
+    char *palabra = malloc(sizeof(char)*100);
+    printf("\nBienvenido al ejercicio del palindromo.\n\nIngrese la palabra a verificar: ");
+    scanf(" %[^\n]", palabra);
+
+    sacarEspacios(palabra);
+    palabra = fraseMinuscula(palabra);
+
+    if(palindromo(palabra)){
+        printf("\nLa palabra SI es un palindromo!\n");
+    }else{
+        printf("\nLa palabra NO es un palindromo!\n");
+    }
+    free(palabra);
+}
+
+bool palindromoRec(char* cadena, int inicio, int fin){
+    if(inicio == fin){
+        return true;
+    }
+    if(cadena[inicio] == cadena[fin]){
+        return palindromoRec(cadena, inicio+1, fin-1);
+    }
+    return false;
+}
+
+void ejercicio2(){
+    int m;
+    int n;
+    printf("\nBienvenido al ejercicio del producto mediante sumas sucesivas.\n\nIngrese el multiplicando: ");
+    scanf(" %d", &m);
+    printf("\nIngrese el multiplicador: ");
+    scanf(" %d", &n);
+
+    int signo = 1; //hay que inicializa sino suma el resultado mas el resultado si los dos son positivs
+    //determinar signo del resultado
+    if( (m < 0 && n>0) || (m>0 && n<0) ){
+        signo = -1;
+    }
+    //hago los dos positivos
+    if(m < 0){
+        m = -m;
+    }
+    if(n < 0){
+        n = -n;
+    }
+    int res = producto(m, n);
+    res *= signo;
+    printf("El resultado es: '%d'", res);
+}
+
+void ejercicio3(){
+    int k;
+    printf("\nBienvenido al ejercicio del k-esimo numero de la serie de fibonacci.\n\nIngrese el k-esimo termino a saber de la sere de fibonacci.\n");
+    k = enteroPositivo();
+
+
+    int res = terminoSeridFibonacci(k);
+    printf("El resultado es: '%d'", res);
+}
+
+void ejercicio4(){
+    int m,n,d;
+    printf("\nBienvenido al ejercicio de calcular un cociente mediante restas sucesivas.\n");
+    printf("Primero ingrese el dividendo. ");
+    m = entero();
+    printf("Segundo ingrese el divisor. ");
+    n = entero();
+    printf("Tercero ingrese la precision. ");
+    d = enteroEnRango(1,10);
+    float res = division(m,n,d);
+    printf("El resultado es '%f'", res);
+}
+
+void ejercicio5(){
+    printf("\nBienvenido al ejercicio de agregar el separador de miles a un numero.\n");
+    int n;
+    n = entero();
+    char * strNum = malloc(sizeof(int) *100);
+
+    sprintf(strNum, "%d", n);
+
+    char * res = malloc(sizeof(int) *100);
+    res = agregarSeparadorMiles(strNum);
+    printf("\nResultado: '%s'\n", res);
+    free(res);
+    free(strNum);
+
+}
+void agregarPuntos(char* numero, char* res, int longitudOrig, int longitudRes, int contador){
+    if(longitudRes < 0){
+        return;
+    }
+    if(contador==3){
+        res[longitudRes] = '.';
+        agregarPuntos(numero, res, longitudOrig, longitudRes-1, 0);
+    }else{
+        res[longitudRes] = numero[longitudOrig];
+        agregarPuntos(numero, res, longitudOrig-1, longitudRes-1, contador+1);
+
+    }
+}
+
+void ejercicio6(){
+    printf("\nBienvenido al ejercicio de las senales.\n");
+    printf("\nIngrese una cadena para repesentar la onda, unicamente 'L'(low = _) y 'H'(HIGH = ¯).\n");
+    char * cadena = malloc(sizeof(char)* 100);
+}
+
+void ejercicio7(){
+    printf("\nBienvenido al ejercicio numero 7.\n");
+    printf("\nNot implemented.\n");
+}
+
+void ejercicio8(){
+    printf("\nBienvenido al ejercicio numero 10.\n");
+    printf("\nNot implemented.\n");
+}
+
+void ejercicio9(){
+    printf("\nBienvenido al ejercicio numero 8.\n");
+    printf("\nNot implemented.\n");
+}
+
+void ejercicio10(){
+    printf("\nBienvenido al ejercicio numero 10.\n");
+    printf("\nNot implemented.\n");
+}
