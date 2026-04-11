@@ -5,3 +5,5 @@ void sacarEspacios(char* frase);
 char* fraseMinuscula(char* cadena);
 int enteroPositivo();
 char*pedirSenial();
+void pedirConjunto(int conjunto[], int *tamano);
+int pedirNumeroNatural(char *mensaje);

@@ -121,3 +121,52 @@ char * reunionMafia(int nivel){
         return result;
     }
 }
+
+//Ejercicio 8
+/*8.	Definir una función recursiva que dado un conjunto devuelva una lista con los subconjuntos del mismo
+tales que la suma de los elementos de cada subconjunto sumen una cantidad dada.
+Por ejemplo:   Dado el conjunto A = {10, 3, 1, 7, 4, 2}. La lista de los conjuntos que sumen 7 sería:
+R = [{3, 4}, {1, 4, 2}, {7}]*/
+
+// int ** subconjuntosQueSumanN(int conjunto[], int n);
+void subconjuntosQueSumanN(int conjunto[], int tamano, int n, char **output){
+    static int contadorInterno;
+    contadorInterno = 0;
+    int temp[100];
+
+    encontrarSubconjuntos(conjunto, tamano, 0, 0, n, temp, 0, output, &contadorInterno);
+
+    output[contadorInterno] = NULL;
+}
+
+//Ejercicio 9
+/*9. Escribir una función recursiva que implemente el método que se describe para saber si
+un número es divisible por 7. Se separa la primera cifra de la derecha, se la multiplica
+por 2, y se resta este producto de lo que queda a la izquierda y así sucesivamente,
+hasta que el resultado obtenido sea un número menor a 70. El número original será
+múltiplo de 7 si el resultado da cero o múltiplo de 7.
+Ejemplos:
+32291 -> 1x2=2.
+3229 - 2 =
+3227 -> 7x2=14.
+322 - 14 =
+308 -> 8x2=16
+30 - 16 =
+14 -> Múltiplo de 7
+divisiblePor7 (32291) => verdadero
+
+110 -> 0 x 2 = 0
+11 – 0 =
+11 -> No múltiplo de 7
+divisiblePor7 (110) => falso
+*/
+
+bool divisiblePor7(int n){
+    if(n<70){
+        return (n%7==0);
+    }
+    int ultimo = n%10;
+    int resto = n/10;
+    int reducido = resto - (ultimo*2);
+    return divisiblePor7(reducido);
+}

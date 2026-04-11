@@ -148,14 +148,60 @@ void ejercicio7(){
 }
 
 void ejercicio8(){
-    printf("\nBienvenido al ejercicio numero 10.\n");
-    printf("\nNot implemented.\n");
+    int conjunto[100];
+    int tamano;
+    int n;
+    char *resultados[101];
+
+    pedirConjunto(conjunto, &tamano);
+
+    n = pedirNumeroNatural("Ingrese el valor objetivo(n): ");
+
+    subconjuntosQueSumanN(conjunto, tamano, n, resultados);
+
+    printf("Subconjuntos que suman %d:\n\n", n);
+    for (int i = 0; resultados[i] != NULL; i++) {
+        printf("%s\n", resultados[i]);
+        free(resultados[i]);
+    }
+}
+void encontrarSubconjuntos(int conjunto[], int tamano, int indiceActual, int sumaActual, int objetivo, int subconjuntoTemp[], int tamSub, char **output, int *contador) {
+    if (sumaActual == objetivo) {
+        char *resultado = (char *)malloc(100 * sizeof(char));
+        resultado[0] = '\0';
+        strcat(resultado, "{");
+        for (int i = 0; i < tamSub; i++) {
+            char buffer[10];
+            sprintf(buffer, "%d", subconjuntoTemp[i]);
+            strcat(resultado, buffer);
+            if (i < tamSub - 1)
+                strcat(resultado, ", ");
+        }
+        strcat(resultado, "}");
+        output[(*contador)++] = resultado;
+        return;
+    }
+
+    if (indiceActual == tamano || sumaActual > objetivo)
+        return;
+
+    subconjuntoTemp[tamSub] = conjunto[indiceActual];
+    encontrarSubconjuntos(conjunto, tamano, indiceActual + 1, sumaActual + conjunto[indiceActual], objetivo, subconjuntoTemp, tamSub + 1, output, contador);
+    encontrarSubconjuntos(conjunto, tamano, indiceActual + 1, sumaActual, objetivo, subconjuntoTemp, tamSub, output, contador);
 }
 
+//Ejercicio 9
 void ejercicio9(){
-    printf("\nBienvenido al ejercicio numero 8.\n");
-    printf("\nNot implemented.\n");
+    int n;
+    printf("Bienvenido al ejercicio de divisible por 7!\n Ingrese el numero a saber si es divisible por 7.\n");
+    n = entero();
+    if(divisiblePor7(n)){
+        printf("'%d' SI es divisible por 7\n\n", n);
+    }else{
+        printf("'%d' NO es divisible por 7\n\n", n);
+    }
 }
+
 
 void ejercicio10(){
     printf("\nBienvenido al ejercicio numero 10.\n");

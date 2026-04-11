@@ -95,3 +95,42 @@ char * pedirSenial(){
     }
     return cadena;
 }
+
+int pedirNumeroNatural(char *mensaje) {
+    char linea[100];
+    int num;
+    char extra;
+
+    while (1) {
+        printf("%s", mensaje);
+
+        if (fgets(linea, sizeof(linea), stdin) == NULL) {
+            printf("Error al leer entrada. Intente de nuevo.\n");
+            continue;
+        }
+
+        linea[strcspn(linea, "\n")] = '\0';
+
+        if (sscanf(linea, "%d %c", &num, &extra) != 1) {
+            printf("Error: Ingrese solo numeros naturales (0 o mayor).\n");
+            continue;
+        }
+
+        if (num < 0) {
+            printf("Error: No se permiten numeros negativos.\n");
+            continue;
+        }
+
+        return num;
+    }
+}
+void pedirConjunto(int conjunto[], int *tamano) {
+    *tamano = pedirNumeroNatural("Ingrese la cantidad de elementos del conjunto: ");
+
+    printf("Ingrese los %d elementos separados por espacios:\n", *tamano);
+    for (int i = 0; i < *tamano; i++) {
+        char mensaje[50];
+        sprintf(mensaje, "Elemento %d: ", i + 1);
+        conjunto[i] = pedirNumeroNatural(mensaje);
+    }
+}

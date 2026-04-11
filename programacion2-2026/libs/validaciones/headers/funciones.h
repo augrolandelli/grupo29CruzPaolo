@@ -18,6 +18,7 @@ char* ondaDigitalRec(char* numero, char* res, int inicio, int longitud);
 void ejercicio7();
 
 void ejercicio8();
+void encontrarSubconjuntos(int conjunto[], int tamano, int indiceActual, int sumaActual, int objetivo, int subconjuntoTemp[], int tamSub, char **output, int *contador);
 
 void ejercicio9();
 
