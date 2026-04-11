@@ -71,15 +71,50 @@ void ejercicio3(){
 
 void ejercicio4(){
     int m,n,d;
+    int signo = 1;
     printf("\nBienvenido al ejercicio de calcular un cociente mediante restas sucesivas.\n");
     printf("Primero ingrese el dividendo. ");
     m = entero();
     printf("Segundo ingrese el divisor. ");
     n = entero();
+    if (n == 0) {
+        printf("Error: No se puede dividir por cero.\n");
+        return;
+    }
+    if( (m < 0 && n>0) || (m>0 && n<0) ){
+        signo = -1;
+    }
+    if(m < 0){
+        m = -m;
+    }
+    if(n < 0){
+        n = -n;
+    };
+
     printf("Tercero ingrese la precision. ");
     d = enteroEnRango(1,10);
-    float res = division(m,n,d);
-    printf("El resultado es '%f'", res);
+    float res = division(m,n,d) * signo;
+    printf("El resultado es '%g'", res);
+}
+
+float divisionDecimal (int m, int n, int d, float f){
+    //Caso Base
+    if(m==0 || d==0){return 0; }
+    //Caso Recursivo
+    else{
+        m = m * 10;
+        int parteEnteraDelDecimal = cocienteDeEnteros(m, n);
+        float decimal = (float)parteEnteraDelDecimal/f;
+        int nuevoResto = m - parteEnteraDelDecimal*n;
+        return decimal + divisionDecimal(nuevoResto, n, d-1, f*10);
+    }
+}
+
+int cocienteDeEnteros(int m, int n){
+    //Caso Base
+    if(m<n) {return 0; }
+    //Caso Recursivo
+    else{return 1 + cocienteDeEnteros(m-n, n); }
 }
 
 void ejercicio5(){

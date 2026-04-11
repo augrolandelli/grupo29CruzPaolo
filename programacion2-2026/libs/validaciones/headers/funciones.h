@@ -8,6 +8,8 @@ void ejercicio2();
 void ejercicio3();
 
 void ejercicio4();
+float divisionDecimal (int m, int n, int d, float f);
+int cocienteDeEnteros(int m, int n);
 
 void ejercicio5();
 void agregarPuntos(char* numero, char* res, int longitudOrig, int longitudRes, int contador);

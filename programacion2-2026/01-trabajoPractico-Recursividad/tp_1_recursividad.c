@@ -49,11 +49,18 @@ int terminoSeridFibonacci(int k){
 /*4.	Dados los números enteros m y n, construir una función recursiva que devuelva el
 cociente de ambos, calculando el mismo mediante restas sucesivas. Se deberá tener en cuenta que en el caso
 de que la división no sea exacta, se devolverán hasta d cifras decimales (si es necesario), donde d es un
-valor de 1 a 10 a ingresar como precisión de la división. */
+valor de 1 a 10 a ingresar como precisión de la división.
+division (10,2) => 5 (en este caso “n” podría haber sido cualquier valor, nada cambia el
+resultado porque la división fue exacta.)
+division (22,3) => 7,33333 (en este caso “n” fue 5)
+division (23,4) => 5,75 (en este caso “n” fue 3, pero como el resultado con 2 decimales
+fue suficiente no es necesario mostrar el 5,750 (es decir el “0” final no se muestra)
+                         */
 
 float division(int m, int n, int d){
-    float res = 1;
-    return res;
+    float factor = 10;
+    if(m<n ){return divisionDecimal(m, n, d, factor); }
+    else{return 1 + division(m-n, n, d); }
 }
 
 //Ejercicio 5
