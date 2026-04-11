@@ -77,3 +77,21 @@ char* fraseMinuscula(char* cadena){
     }
     return cadena;
 }
+
+char * pedirSenial(){
+    char* cadena = malloc(sizeof(char)*100);
+    int valida = 0;
+    while (!valida) {
+        printf("Ingrese la senial (conjuno de caracteres L y H mayusculas): ");
+        scanf("%99s", cadena);
+        valida = 1;
+        for (int i = 0; cadena[i] != '\0'; i++) {
+            if (cadena[i] != 'L' && cadena[i] != 'H') {
+                printf("Error: Solo se permiten caracteres 'L' y 'H' en mayusculas.\n");
+                valida = 0;
+                break;
+            }
+        }
+    }
+    return cadena;
+}

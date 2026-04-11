@@ -1,8 +1,10 @@
 #include "../headers/funciones.h"
+#include "../headers/validaciones.h"
 #include "../../../01-trabajoPractico-Recursividad/tp_1_recursividad.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 // TP_1_RECURSIVIDAD
 
@@ -110,9 +112,30 @@ void agregarPuntos(char* numero, char* res, int longitudOrig, int longitudRes, i
 }
 
 void ejercicio6(){
-    printf("\nBienvenido al ejercicio de las senales.\n");
-    printf("\nIngrese una cadena para repesentar la onda, unicamente 'L'(low = _) y 'H'(HIGH = ¯).\n");
-    char * cadena = malloc(sizeof(char)* 100);
+    printf("\nBienvenido al ejercicio de las seniales.\n");
+    printf("\nIngrese la cadena a repesentar la onda, unicamente 'L'(low = _) y 'H'(HIGH = ¯).\n");
+    char * cadena = pedirSenial();
+    char * res = ondaDigital(cadena);
+    printf("%s", res);
+    free(res);
+    free(cadena);
+}
+char* ondaDigitalRec(char * cadena, char * resultado,int inicio, int longitud){
+    if(inicio==longitud){
+        return resultado;
+    }
+    if(cadena[inicio] == 'L'){
+        strcat(resultado, "_");
+        if(inicio + 1 < longitud && cadena[inicio+1] == 'H'){
+            strcat(resultado, "|");
+        }
+    }else if(cadena[inicio] == 'H'){
+        strcat(resultado, "-");
+        if(inicio + 1 < longitud && cadena[inicio+1] == 'L'){
+            strcat(resultado, "|");
+        }
+    }
+    return ondaDigitalRec(cadena, resultado, inicio+1, longitud);
 }
 
 void ejercicio7(){

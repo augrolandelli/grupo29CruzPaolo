@@ -13,6 +13,7 @@ void ejercicio5();
 void agregarPuntos(char* numero, char* res, int longitudOrig, int longitudRes, int contador);
 
 void ejercicio6();
+char* ondaDigitalRec(char* numero, char* res, int inicio, int longitud);
 
 void ejercicio7();
 

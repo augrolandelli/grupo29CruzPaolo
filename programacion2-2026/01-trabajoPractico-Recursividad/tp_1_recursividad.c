@@ -70,24 +70,9 @@ char * agregarSeparadorMiles(char numero[]){
     return res;
 }
 
-//Ejercicio 6
-/*6.	Se conoce que la mafia china es muy organizada y protege mucho a sus miembros, cuando deciden asistir
-a una reunión se dispone de una cantidad de chinos que asisten, y ellos se ubican de forma que al mirarlos
-frontalmente generan cierto respeto y temor. A continuación, se tiene una serie de posibles reuniones y su
-nivel y la apariencia que se tiene del grupo que va a la reunión vistos frontalmente:
 
-Nivel reunión	Vista frontal de la delegación
-		1 	        (-.-)
-		2 		 (-.(-.-).-)
-		3 	  (-.(-.(-.-).-).-)
-		4  (-.(-.(-.(-.-).-).-).-)
-
-*/
-
-char * reunionMafia(int nivel);
-
-//ejercicio 7
-/*8.	Se tiene una cadena que representa una onda digital de señales L (Low) y H (High). Se pide mostrar
+//ejercicio 6
+/*6.	Se tiene una cadena que representa una onda digital de señales L (Low) y H (High). Se pide mostrar
 la onda que representa utilizando “_” y “|”.
 
 Ejemplo: Si se tiene la cadena HHHHLLLLHHHHHLLHHLL, su onda digital se puede ver algo así:
@@ -96,4 +81,9 @@ _ _ _ _            _ _ _ _ _      _ _
 
 */
 
-char * ondaDigital(char seniales[]);
+char * ondaDigital(char seniales[]){
+    int longitud = strlen(seniales);
+    char * resultado = malloc(sizeof(char) * (longitud * 2 + 1));
+    resultado[0] = '\0';
+    return ondaDigitalRec(seniales, resultado, 0, longitud);
+}
