@@ -1,4 +1,4 @@
-int printMenu();
+
 int entero();
 int enteroEnRango(int minimo, int maximo);
 void sacarEspacios(char* frase);

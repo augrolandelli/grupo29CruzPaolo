@@ -8,6 +8,24 @@
 
 // TP_1_RECURSIVIDAD
 
+int printMenu(){
+    printf("|================================|\n");
+    printf("|BIENVENIDO AL TP DE RECURSIVIDAD|\n");
+    printf("|0) Salir                        |\n");
+    printf("|1) Palindomo                    |\n");
+    printf("|2) Producto                     |\n");
+    printf("|3) Fibonacci                    |\n");
+    printf("|4) Cociente recursivo           |\n");
+    printf("|5) Agregar separador de miles   |\n");
+    printf("|6) Onda digital                 |\n");
+    printf("|7) Mafia china                  |\n");
+    printf("|8) Subconjuntos que suma n      |\n");
+    printf("|9) Numero divisible por 7       |\n");
+    printf("|10) Numero explosivo            |\n");
+    printf("|================================|\n");
+    int n = enteroEnRango(0, 10);
+    return n;
+}
 void ejercicio1(){
     char *palabra = malloc(sizeof(char)*100);
     printf("\nBienvenido al ejercicio del palindromo.\n\nIngrese la palabra a verificar: ");

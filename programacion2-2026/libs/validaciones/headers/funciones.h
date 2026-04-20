@@ -1,5 +1,5 @@
 #include <stdbool.h>
-
+int printMenu();
 void ejercicio1();
 bool palindromoRec(char* palabra, int inicio, int fin);
 
