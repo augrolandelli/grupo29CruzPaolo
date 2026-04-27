@@ -52,6 +52,22 @@ int enteroPositivo(){
     return numero;
 }
 
+int enteroMayorQue0(){
+    int numero;
+    int resultado;
+    do{
+        printf("Ingrese un numero positivo: ");
+        resultado = scanf("%d", &numero);
+        if (resultado != 1) {
+            printf("Error: Debe ser un valor numerico.\n");
+            while (getchar() != '\n');
+        } else if (numero <= 0) {
+            printf("Error: El numero debe ser positivo.\n");
+        }
+    }while(resultado != 1 || numero <= 0);
+    return numero;
+}
+
 void sacarEspacios(char* frase){
     int i = 0, j = 0;
     while (frase[i]) {
@@ -148,3 +164,27 @@ Lista cargarListaEnteros(){
     }
     return l;
 }
+
+Lista cargarListaEnterosPositivos(){
+    Lista l = l_crear();
+    int longitud;
+
+    do{
+        printf("Cuantos elementos tendra la lista? ");
+        longitud = enteroPositivo();
+
+        if (longitud == 0) {
+            printf("Error: La lista no puede tener 0 elementos.\n");
+        }
+    }while(longitud == 0);
+
+
+    for(int i = 1; i<=longitud; i++){
+        printf("Elemento [%d], ", i);
+        int e = enteroMayorQue0();
+        TipoElemento x = te_crear(e);
+        l_agregar(l, x);
+    }
+    return l;
+}
+

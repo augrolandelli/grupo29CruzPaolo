@@ -53,7 +53,27 @@ void ejercicio2(){
 
 }
 void ejercicio3(){
-    printf("|===========EJERCICIO 3===========|\n");
+    printf("|================     EJERCICIO 3     =================|\n");
+    printf("|====  Ingrese dos listas de igual longitud para:  ====|\n");
+    printf("|=======   Determinar si l2 es multiplo de l1   =======|\n");
+    printf("|======================================================|\n");
+    printf("\n===============     PRIMER LISTA     ================\n");
+    Lista l1 = cargarListaEnterosPositivos();
+    printf("\n===============    SEGUNDA  LISTA    ================\n");
+    Lista l2 = cargarListaEnterosPositivos();
+    if (l_longitud(l1) != l_longitud(l2)){
+        printf("\n== LAS LISTAS NO SON IGUALES, NO SE PUEDE DETERMINAR. ==\n");
+        return;
+    }
+    ResultadosMul res = multiplo(l1,l2);
+    if(res.esMultiplo && res.escalar){
+        printf("\n== L2 ES multiplo de L1 y por un escalar: %d ==\n", res.numEscalar);
+    }else if(res.esMultiplo && !res.escalar){
+        printf("\n== L2 ES multiplo de L1 ==\n");
+    }else if(!res.esMultiplo){
+        printf("\n== L2 NO es multiplo de L1 ==\n");
+    }
+
 }
 void ejercicio4(){
     printf("|================     EJERCICIO 4     =================|\n");

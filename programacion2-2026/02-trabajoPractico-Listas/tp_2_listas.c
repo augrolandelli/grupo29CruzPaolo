@@ -99,6 +99,49 @@ ResultadoValorMinimo valorMinimo(Lista l1, Lista l2){
     return res;
 }
 
+// P3
+/*
+typedef struct
+{
+    bool esMultiplo;
+    bool escalar;
+    int numEscalar;
+} ResultadosMul;
+
+*/
+ResultadosMul multiplo(Lista l1, Lista l2){
+    ResultadosMul res;
+    res.esMultiplo = true;
+    res.escalar = true;
+    Iterador it1 = iterador(l1);
+    Iterador it2 = iterador(l2);
+    TipoElemento x,y;
+    int primerEscalar = -1;
+    int escalarActual = 0;
+    while(hay_siguiente(it1) && hay_siguiente(it2)){
+        x = siguiente(it1);
+        y = siguiente(it2);
+        if(x->clave == 0 || (y->clave % x->clave) != 0){
+            res.esMultiplo = false;
+        }
+        if (x->clave != 0) {
+            escalarActual = (y->clave) / (x->clave);
+        } else {
+            escalarActual = 0;
+        }
+        if(primerEscalar == -1){
+            primerEscalar = escalarActual;
+        } else {
+            if(escalarActual != primerEscalar){
+                res.escalar = false;
+            }
+        }
+    }
+    if(res.escalar){
+        res.numEscalar = primerEscalar;
+    }
+    return res;
+}
 
 // P4 Retorna 1 si L1 > L2, 2 si L2 > L1, 0 si son iguales
 int CompararListas(Lista l1, Lista L2){
