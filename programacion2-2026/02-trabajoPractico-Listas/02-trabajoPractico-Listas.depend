@@ -1,0 +1,69 @@
+# depslib dependency file v1.0
+1775875906 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones.c
+	"../headers/funciones.h"
+	"../headers/validaciones.h"
+	"../../../01-trabajoPractico-Recursividad/tp_1_recursividad.h"
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+
+1775875554 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones.h
+	<stdbool.h>
+
+1776887852 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\validaciones.h
+	"../../listas/headers/listas.h"
+
+1775869264 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.h
+	<stdbool.h>
+
+1776888563 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"../headers/validaciones.h"
+
+1776706998 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\listas\implementaciones\listas_arreglos.c
+	"../headers/listas.h"
+	<stdlib.h>
+	<stdio.h>
+	"../../tipoElemento/headers/tipo_elemento.h"
+
+1776707006 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\listas\headers\listas.h
+	<stdbool.h>
+	"../../tipoElemento/headers/tipo_elemento.h"
+
+1776705332 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\tipoelemento\headers\tipo_elemento.h
+
+1776707018 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\tipoelemento\implementaciones\tipo_elemento.c
+	"../headers/tipo_elemento.h"
+	<stdlib.h>
+
+1776889458 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\02-trabajopractico-listas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../libs/tipoElemento/headers/tipo_elemento.h"
+	"../libs/validaciones/headers/funciones_listas.h"
+
+1777306179 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones_listas.c
+	"../headers/funciones_listas.h"
+	"../headers/validaciones.h"
+	"../../../02-trabajoPractico-Listas/tp_2_listas.h"
+	<stdio.h>
+	<stdlib.h>
+
+1776707732 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones_listas.c
+
+1776890155 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones_listas.h
+
+1777306549 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\02-trabajopractico-listas\tp_2_listas.c
+	"tp_2_listas.h"
+	"../libs/listas/headers/listas.h"
+	"stdlib.h"
+	"stdio.h"
+
+1777238468 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\02-trabajopractico-listas\tp_2_listas.h
+	<stdbool.h>
+	"../libs/listas/headers/listas.h"
+

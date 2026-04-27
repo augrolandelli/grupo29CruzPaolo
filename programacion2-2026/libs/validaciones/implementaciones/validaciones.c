@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 #include "../headers/validaciones.h"
 
 
@@ -123,4 +124,27 @@ void pedirConjunto(int conjunto[], int *tamano) {
         sprintf(mensaje, "Elemento %d: ", i + 1);
         conjunto[i] = pedirNumeroNatural(mensaje);
     }
+}
+
+Lista cargarListaEnteros(){
+    Lista l = l_crear();
+    int longitud;
+
+    do{
+        printf("Cuantos elementos tendra la lista? ");
+        longitud = enteroPositivo();
+
+        if (longitud == 0) {
+            printf("Error: La lista no puede tener 0 elementos.\n");
+        }
+    }while(longitud == 0);
+
+
+    for(int i = 1; i<=longitud; i++){
+        printf("Elemento [%d], ", i);
+        int e = entero();
+        TipoElemento x = te_crear(e);
+        l_agregar(l, x);
+    }
+    return l;
 }

@@ -10,13 +10,13 @@
 1775869264 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\tp_1_recursividad.h
 	<stdbool.h>
 
-1775875714 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones.c
+1776708723 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\validaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	"../headers/validaciones.h"
 
-1775873942 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\validaciones.h
+1776708723 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\validaciones.h
 
 1775839557 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\01-trabajopractico-recursividad\main.c
 	<stdio.h>
@@ -24,10 +24,10 @@
 	"../libs/validaciones/headers/funciones.h"
 	"../libs/validaciones/headers/validaciones.h"
 
-1775875554 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones.h
+1776708723 c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\headers\funciones.h
 	<stdbool.h>
 
-1775875906 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones.c
+1776708723 source:c:\users\augus\documents\unlu\prog_ii_2026\programacion2-2026\libs\validaciones\implementaciones\funciones.c
 	"../headers/funciones.h"
 	"../headers/validaciones.h"
 	"../../../01-trabajoPractico-Recursividad/tp_1_recursividad.h"

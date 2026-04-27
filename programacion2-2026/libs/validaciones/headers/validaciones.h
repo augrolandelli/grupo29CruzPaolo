@@ -1,3 +1,4 @@
+#include "../../listas/headers/listas.h"
 
 int entero();
 int enteroEnRango(int minimo, int maximo);
@@ -7,3 +8,4 @@ int enteroPositivo();
 char*pedirSenial();
 void pedirConjunto(int conjunto[], int *tamano);
 int pedirNumeroNatural(char *mensaje);
+Lista cargarListaEnteros();

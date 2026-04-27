@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="02-trabajoPractico-Listas" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/02-trabajoPractico-Listas" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/02-trabajoPractico-Listas" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../libs/listas/headers/listas.h" />
+		<Unit filename="../libs/listas/implementaciones/listas_arreglos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libs/tipoElemento/headers/tipo_elemento.h" />
+		<Unit filename="../libs/tipoElemento/implementaciones/tipo_elemento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libs/validaciones/headers/funciones_listas.h" />
+		<Unit filename="../libs/validaciones/headers/validaciones.h" />
+		<Unit filename="../libs/validaciones/implementaciones/funciones_listas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../libs/validaciones/implementaciones/validaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tp_2_listas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tp_2_listas.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
