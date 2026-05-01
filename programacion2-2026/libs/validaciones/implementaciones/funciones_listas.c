@@ -98,7 +98,7 @@ void ejercicio5(){
 }
 void ejercicio6(){
 
-    printf("|================     EJERCICIO 4     =================|\n");
+    printf("|================     EJERCICIO 6     =================|\n");
     printf("|========       Ingrese dos listas para:       ========|\n");
     printf("|========      Ver si L2 es sublista de L1     ========|\n");
     printf("|======================================================|\n");

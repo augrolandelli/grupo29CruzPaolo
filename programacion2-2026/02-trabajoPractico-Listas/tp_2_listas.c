@@ -178,11 +178,8 @@ bool esSublista(Lista l1, Lista l2){
         aparecio = false;
         TipoElemento x = siguiente(it2);
         Iterador it1 = iterador(l1);
-        printf("l2:'%d'\n", x->clave);
         while(hay_siguiente(it1)){
             TipoElemento y = siguiente(it1);
-            printf("l1:'%d'\n", y->clave);
-            printf("\n\nl2:'%d' -  l1: '%d'\n\n", x->clave, y->clave);
             if(x->clave == y->clave){
                 aparecio = true;
             }
