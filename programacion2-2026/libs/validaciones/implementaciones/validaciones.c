@@ -188,3 +188,36 @@ Lista cargarListaEnterosPositivos(){
     return l;
 }
 
+Pila cargarPilaEnteros(){
+    Pila p = p_crear();
+    int longitud;
+
+    printf("Cuantos elementos tendra la pila? ");
+    longitud = enteroPositivo();
+
+
+
+    for(int i = 1; i<=longitud; i++){
+        printf("Elemento [%d], ", i);
+        int e = entero();
+        TipoElemento x = te_crear(e);
+        p_apilar(p, x);
+    }
+    return p;
+}
+
+int PilaLongitud(Pila p){
+    int longitud = 0;
+    Pila paux = p_crear();
+    TipoElemento x;
+    while(!p_es_vacia(p)){
+        longitud++;
+        x = p_desapilar(p);
+        p_apilar(paux,x);
+    }
+    while(!p_es_vacia(paux)){
+        x = p_desapilar(paux);
+        p_apilar(p,x);
+    }
+    return longitud;
+}

@@ -1,4 +1,5 @@
 #include "../../listas/headers/listas.h"
+#include "../../pilas/headers/pilas.h"
 
 int entero();
 int enteroEnRango(int minimo, int maximo);
@@ -11,3 +12,6 @@ void pedirConjunto(int conjunto[], int *tamano);
 int pedirNumeroNatural(char *mensaje);
 Lista cargarListaEnteros();
 Lista cargarListaEnterosPositivos();
+
+Pila cargarPilaEnteros();
+int PilaLongitud(Pila p);
