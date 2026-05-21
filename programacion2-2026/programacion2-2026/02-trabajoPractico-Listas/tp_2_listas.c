@@ -1,0 +1,192 @@
+#include "tp_2_listas.h"
+#include "../libs/listas/headers/listas.h"
+#include "stdlib.h"
+#include "stdio.h"
+
+Lista verElementosQueNoSeRepiten(Lista l1, Lista l2){
+    Lista res = l_crear();
+    int long1 = l_longitud(l1);
+    int long2 = l_longitud(l2);
+
+    for(int i = 1; i <= long1; i++){
+        TipoElemento x = l_recuperar(l1, i);
+        int aparecio = 0;
+
+        for(int k = 1; k <= long2; k++){
+            TipoElemento y = l_recuperar(l2, k);
+            if(x->clave == y->clave){
+                aparecio = 1;
+            }
+        }
+        if(!aparecio){
+             l_agregar(res,x);
+        }
+    }
+    return res;
+}
+Lista verElementosRepetidos(Lista l1, Lista l2){
+    Lista res = l_crear();
+    int long1 = l_longitud(l1);
+    int long2 = l_longitud(l2);
+
+    for(int i = 1; i <= long1; i++){
+        TipoElemento x = l_recuperar(l1, i);
+        int aparecio = 0;
+
+        for(int k = 1; k <= long2; k++){
+            TipoElemento y = l_recuperar(l2, k);
+            if(x->clave == y->clave){
+                aparecio = 1;
+            }
+        }
+        if(aparecio){
+             l_agregar(res,x);
+        }
+    }
+    return res;
+}
+
+
+float promedio(Lista l1){
+
+    int longitud = l_longitud(l1);
+    int suma = 0;
+    for(int i = 1; i <= longitud; i++){
+        TipoElemento x = l_recuperar(l1, i);
+        suma += x->clave;
+    }
+    return ((float)suma/longitud);
+}
+
+/*
+
+typedef struct resultadoStruct
+{
+    int pos;
+    int valor;
+    int pos_2;
+    int valor_2;
+} ResultadoValorMinimo;
+*/
+
+// Punto 2 E
+ResultadoValorMinimo valorMinimo(Lista l1, Lista l2){
+    ResultadoValorMinimo res;
+    TipoElemento x;
+    int long1 = l_longitud(l1);
+    int long2 = l_longitud(l2);
+    x = l_recuperar(l1,1);
+    int minimo1 = x->clave;
+    x = l_recuperar(l2,1);
+    int minimo2 = x->clave;
+    for(int i = 1; i<long1;i++){
+        x = l_recuperar(l1,i);
+        if(x->clave <= minimo1){
+            minimo1 = x->clave;
+            res.pos = i;
+            res.valor = minimo1;
+        }
+    }
+
+    for(int i = 1; i<=long2;i++){
+        TipoElemento x = l_recuperar(l2,i);
+        if(x->clave < minimo2){
+            minimo2 = x->clave;
+            res.pos_2 = i;
+            res.valor_2 = minimo2;
+        }
+    }
+    return res;
+}
+
+// P3
+/*
+typedef struct
+{
+    bool esMultiplo;
+    bool escalar;
+    int numEscalar;
+} ResultadosMul;
+
+*/
+ResultadosMul multiplo(Lista l1, Lista l2){
+    ResultadosMul res;
+    res.esMultiplo = true;
+    res.escalar = true;
+    Iterador it1 = iterador(l1);
+    Iterador it2 = iterador(l2);
+    TipoElemento x,y;
+    int primerEscalar = -1;
+    int escalarActual = 0;
+    while(hay_siguiente(it1) && hay_siguiente(it2)){
+        x = siguiente(it1);
+        y = siguiente(it2);
+        if(x->clave == 0 || (y->clave % x->clave) != 0){
+            res.esMultiplo = false;
+        }
+        if (x->clave != 0) {
+            escalarActual = (y->clave) / (x->clave);
+        } else {
+            escalarActual = 0;
+        }
+        if(primerEscalar == -1){
+            primerEscalar = escalarActual;
+        } else {
+            if(escalarActual != primerEscalar){
+                res.escalar = false;
+            }
+        }
+    }
+    if(res.escalar){
+        res.numEscalar = primerEscalar;
+    }
+    return res;
+}
+
+// P4 Retorna 1 si L1 > L2, 2 si L2 > L1, 0 si son iguales
+int CompararListas(Lista l1, Lista L2){
+    int res;
+    Iterador it1 = iterador(l1);
+    Iterador it2 = iterador(L2);
+    int suma1=0,suma2=0;
+    while(hay_siguiente(it1)){
+        TipoElemento x = siguiente(it1);
+        suma1 += x->clave;
+    }
+    while(hay_siguiente(it2)){
+        TipoElemento y = siguiente(it2);
+        suma2 += y->clave;
+    }
+
+    if(suma1>suma2){
+        res = 1;
+    }else if(suma1<suma2){
+        res = 2;
+    }else{
+        res = 0;
+    }
+    return res;
+}
+
+
+// P6
+bool esSublista(Lista l1, Lista l2){
+    bool sublista, aparecio;
+    Iterador it2 = iterador(l2);
+    sublista = true;
+    while(hay_siguiente(it2)){
+        aparecio = false;
+        TipoElemento x = siguiente(it2);
+        Iterador it1 = iterador(l1);
+        while(hay_siguiente(it1)){
+            TipoElemento y = siguiente(it1);
+            if(x->clave == y->clave){
+                aparecio = true;
+            }
+        }
+        if(!aparecio){
+            sublista = false;
+        }
+    }
+    return sublista;
+}
