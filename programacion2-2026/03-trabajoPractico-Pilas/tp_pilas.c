@@ -71,7 +71,43 @@ Pila p_ej2_eliminarclave(Pila p, int clave){
 
 //  d.	Intercambiar los valores de 2 posiciones ordinales de la pila, por ejemplo la 2da con la 4ta.
 // retorna la nueva pila con las posiciones cambiadas, siempre que sea posible haerlo, caso contrario retorna la pila recibida.
-Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2);
+Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2){
+    Pila res = p_crear();
+    int contador = 0;
+    Pila paux = p_crear();
+    TipoElemento x, epos1, epos2;
+    while(!p_es_vacia(p)){
+        contador++;
+        x = p_desapilar(p);
+        if(contador == pos1){
+            epos1 = x;
+        }else if(contador == pos2){
+            epos2 = x;
+        }
+        p_apilar(paux,x);
+    }
+    while(!p_es_vacia(paux)){
+        x = p_desapilar(paux);
+        p_apilar(p,x);
+        p_apilar(res,x);
+    }
+    contador = 0;
+    while(!p_es_vacia(res)){
+        contador++;
+        x = p_desapilar(res);
+        if(contador == pos1){
+            x = epos2;
+        }else if(contador == pos2){
+            x = epos1;
+        }
+        p_apilar(paux,x);
+    }
+    while(!p_es_vacia(paux)){
+        x = p_desapilar(paux);
+        p_apilar(res,x);
+    }
+    return res;
+}
 
 //  e.	Duplicar el contenido de una pila.
 // retorna la nueva pila. Si esta vacia retorna otra vacia.
@@ -129,7 +165,6 @@ bool p_ej3_iguales(Pila p1, Pila p2){
         p_apilar(paux,x);
         p_apilar(paux,y);
     }
-    p_mostrar(paux);
     while(!p_es_vacia(paux)){
         x=p_desapilar(paux);
         p_apilar(p2,x);
@@ -137,6 +172,49 @@ bool p_ej3_iguales(Pila p1, Pila p2){
         p_apilar(p1,y);
     }
     return res;
+}
+
+/**
+ 4.	Construir un algoritmo que, utilizando el TAD Pila, permita convertir un número decimal pasado como parámetro,
+	a su correspondiente valor expresado en una base de 2 a 16 (hexadecimal).
+	Determinar la complejidad algorítmica de la solución.
+ */
+// retorna el valor cambiado de base como un string (char*).  Si la base no esta entre 2 y 16 retorno el mismo numero recibido como string (char*).
+char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
+    char* resultado = (char*) malloc(100 * sizeof(char));
+    Pila p = p_crear();
+    TipoElemento x;
+    int resto;
+    int i = 0;
+
+    if(nrootrabase < 2 || nrootrabase > 16){
+        char* resultado = (char*) malloc(20 * sizeof(char));
+        sprintf(resultado, "%d", nrobasedecimal);
+        return resultado;
+    }
+
+    if(nrobasedecimal == 0){
+        char* resultado = (char*) malloc(2 * sizeof(char));
+        strcpy(resultado, "0");
+        return resultado;
+    }
+
+    while(nrobasedecimal > 0){
+        resto = nrobasedecimal % nrootrabase;
+        p_apilar(p, te_crear(resto));
+        nrobasedecimal = nrobasedecimal / nrootrabase;
+    }
+
+    while(!p_es_vacia(p)){
+        x = p_desapilar(p);
+        if(x->clave >= 10)  { resultado[i] = 'A' + (x->clave - 10); }
+        else                { resultado[i] = x->clave + '0'; }
+        i++;
+    }
+
+    resultado[i] = '\0';
+
+    return resultado;
 }
 
 /**
@@ -175,12 +253,13 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
     while(!p_es_vacia(p)){
         x = p_desapilar(p);
         p_apilar(paux,x);
-        if(x->clave != clave){
-            p_apilar(res,x);
-        }
+
     }
     while(!p_es_vacia(paux)){
         x = p_desapilar(paux);
+        if(x->clave != clave){
+            p_apilar(res,x);
+        }
         p_apilar(p,x);
     }
     return res;
@@ -254,4 +333,54 @@ Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
  */
 // retornar la nueva pila con las claves unicas (no deben existir repetidas) y por cada una la cantidad de veces que aparecia en la Pila recibida por parametro
 // Si la pila estavacia retorna pila vacia.
-Pila p_ej8_sacarrepetidos(Pila p);
+Pila p_ej8_sacarrepetidos(Pila p){
+
+    Pila p_aux = p_crear();
+    Pila SinRepetidos = p_crear();
+    Pila p_resultado = p_crear();
+    TipoElemento x,y;
+    int cantidad=0;
+
+    //Creo una pilas con elementos sin repetir.
+    while(!p_es_vacia(p)){
+        x = p_desapilar(p);
+        p_apilar(p_aux, x);
+        if(!p_ej2_existeclave(SinRepetidos, x->clave)){
+            p_apilar(SinRepetidos, x);
+        }
+    }
+
+    while(!p_es_vacia(p_aux)){
+        p_apilar(p, p_desapilar(p_aux));
+    }
+
+    //Ahora agarro el primer elemento de la pila sin repetir y evaluo la cantidad de veces que aparece en la pila original.
+    //metodo corte de control.
+    while(!p_es_vacia(SinRepetidos)){
+
+        x = p_desapilar(SinRepetidos);
+
+        while(!p_es_vacia(p)){
+            y = p_desapilar(p);
+            p_apilar(p_aux, y);
+            if(x->clave == y->clave)    {cantidad ++;}
+        }
+
+        int* contador = malloc(sizeof(int));    //creo un puntero CONTADOR y Guardo memoria
+        *contador = cantidad;                   //en esa memoria reservada, almaceno la CANTIDAD
+        x->valor = contador;  //Ahora si meto en X->valor, la cantidad de veces que se repitio el elemento
+        p_apilar(p_resultado, x);  //almaceno el TipoElemento con la clave y la cantidad de veces que aparece.
+        cantidad = 0;   //reinicio mi contador.
+
+        //p_cambiar(p, p_aux); Vuelvo a cargar p con los contenidos que le habia desapilado.
+        while(!p_es_vacia(p_aux)){
+            p_apilar(p, p_desapilar(p_aux));
+        }
+    }
+
+    while(!p_es_vacia(p_aux)){
+        p_apilar(p, p_desapilar(p_aux));
+    }
+
+    return p_resultado;
+}

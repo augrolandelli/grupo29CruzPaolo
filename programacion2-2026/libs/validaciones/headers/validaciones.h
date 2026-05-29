@@ -15,3 +15,4 @@ Lista cargarListaEnterosPositivos();
 
 Pila cargarPilaEnteros();
 int PilaLongitud(Pila p);
+void p_mostrar_con_clave(Pila p);

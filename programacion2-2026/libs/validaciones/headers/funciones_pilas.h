@@ -4,3 +4,5 @@ void ejercicio3();
 void ejercicio4();
 void ejercicio5();
 void ejercicio6();
+void ejercicio7();
+void ejercicio8();

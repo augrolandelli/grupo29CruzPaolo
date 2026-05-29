@@ -16,6 +16,9 @@ int main()
         case 3:
             ejercicio3();
             break;
+        case 4:
+            ejercicio4();
+            break;
         case 5:
             ejercicio5();
             break;
@@ -24,6 +27,9 @@ int main()
             break;
         case 7:
             ejercicio7();
+            break;
+        case 8:
+            ejercicio8();
             break;
         default:
             printf("Ese ejercicio no existe, solo del 2 al 6 o 1 para salir.\n\n");

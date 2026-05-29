@@ -193,7 +193,7 @@ Pila cargarPilaEnteros(){
     int longitud;
 
     printf("Cuantos elementos tendra la pila? ");
-    longitud = enteroPositivo();
+    longitud = enteroEnRango(0,10);
 
 
 
@@ -220,4 +220,23 @@ int PilaLongitud(Pila p){
         p_apilar(p,x);
     }
     return longitud;
+}
+
+void p_mostrar_con_clave(Pila p){
+
+    Pila p_aux = p_crear();
+    TipoElemento x;
+
+    printf("Contenido de la pila: ");
+
+    while(!p_es_vacia(p)){
+        x = p_desapilar(p);
+        p_apilar(p_aux, x);
+        printf(" %d:%d ", x->clave, *(int*)x->valor);
+    }
+
+    while(!p_es_vacia(p_aux)){
+        p_apilar(p, p_desapilar(p_aux));
+    }
+
 }
