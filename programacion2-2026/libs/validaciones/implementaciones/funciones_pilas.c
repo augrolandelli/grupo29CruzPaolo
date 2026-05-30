@@ -81,9 +81,7 @@ void ejercicio2(){
     printf("Son %d elementos: ",elementos);
     p_mostrar(p);
 
-    printf("\n=============== COMPLEJIDAD ALGORITMICA ===============\n");
-    printf("Para todas las operaciones del Ejercicio 2:\n");
-    printf("(TAD Arreglos): O(n) | (TAD Punteros): O(n^2)\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^2)      ===\n");
     printf("|========================================================|\n");
 
 }
@@ -109,8 +107,7 @@ void ejercicio3(){
     printf("(Pila 2) ");
     p_mostrar(p2);
 
-    printf("\nComplejidad Algoritmica: O(n)\n");
-
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^2)      ===\n");
     printf("|========================================================|\n");
 
 }
@@ -129,9 +126,8 @@ void ejercicio4(){
     res = p_ej4_cambiarbase(base_decimal, otra_base);
 
     printf("\nResultado: %s\n", res);
-    printf("Complejidad Algoritmica: 2n --> O(n)\n");
-
-    printf("\n|======================================================|\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n)      ===\n");
+    printf("|========================================================|\n");
 
 }
 
@@ -147,8 +143,7 @@ void ejercicio5(){
     printf("(Pila invertida)\t");
     p_mostrar(res);
 
-    printf("\n=============== COMPLEJIDAD ALGORITMICA ===============\n");
-    printf("       (TAD Arreglos): O(n) | (TAD Punteros): O(n^2)     \n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^2)      ===\n");
     printf("|========================================================|\n");
 
 }
@@ -177,8 +172,8 @@ void ejercicio6(){
     printf("(Resultado)\t");
     p_mostrar(resRec);
 
-    printf("\n=============== COMPLEJIDAD ALGORITMICA ===============\n");
-    printf("            Arreglos: O(n) |      Punteros: O(n^2)\n");
+    printf("\n\n=============== COMPLEJIDAD ALGORITMICA ===============\n");
+    printf("            Iterativa: O(n^2) |      Recursiva: O(n^2)\n");
     printf("|========================================================|\n");
 }
 
@@ -186,8 +181,11 @@ void ejercicio7(){
     printf("|=================     EJERCICIO 7     ==================|\n");
     printf("|===  DETERMINAR LOS ELEMENTOS EN COMUN DE DOS PILAS  ===|\n");
 
+    printf("\n|=Ingresar primer pila=|\n");
     Pila p1 = cargarPilaEnteros();
+    printf("\n|=Ingresar segunda pila=|\n");
     Pila p2 = cargarPilaEnteros();
+
     Pila res = p_ej7_elementoscomunes(p1, p2);
 
     printf("(Pila 1)\t\t");
@@ -197,9 +195,7 @@ void ejercicio7(){
     printf("(Pila Resultado)\t");
     p_mostrar(res);
 
-    printf("\n=============== COMPLEJIDAD ALGORITMICA ===============\n");
-    printf("(TAD Arreglos):  O(n^2) si son iguales.\n");
-    printf("(TAD Punteros): O(N * M^2)\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^3)      ===\n");
     printf("|========================================================|\n");
 }
 
@@ -215,9 +211,7 @@ void ejercicio8(){
     printf("(Pila Resultado)\t");
     p_mostrar_con_clave(res);
 
-    printf("\n=============== COMPLEJIDAD ALGORITMICA ===============\n");
-    printf("(TAD Arreglos): O(n^2).\n");
-    printf("(TAD Punteros): O(n^3).\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^3)      ===\n");
     printf("|========================================================|\n");
 }
 
