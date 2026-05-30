@@ -1,4 +1,7 @@
 #include "tp_pilas.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 /**
     2.	Dada una pila cargada con valores al azar realizar los siguientes ejercicios:
  */
@@ -376,10 +379,6 @@ Pila p_ej8_sacarrepetidos(Pila p){
         while(!p_es_vacia(p_aux)){
             p_apilar(p, p_desapilar(p_aux));
         }
-    }
-
-    while(!p_es_vacia(p_aux)){
-        p_apilar(p, p_desapilar(p_aux));
     }
 
     return p_resultado;

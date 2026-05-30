@@ -32,6 +32,6 @@ int main()
             ejercicio8();
             break;
         default:
-            printf("Ese ejercicio no existe, solo del 2 al 6 o 1 para salir.\n\n");
+            printf("Ese ejercicio no existe, solo del 2 al 8 o 1 para salir.\n\n");
     }
 }
