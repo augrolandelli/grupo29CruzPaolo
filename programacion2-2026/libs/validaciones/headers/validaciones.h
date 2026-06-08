@@ -1,5 +1,6 @@
 #include "../../listas/headers/listas.h"
 #include "../../pilas/headers/pilas.h"
+#include "../../colas/headers/colas.h"
 
 int entero();
 int enteroEnRango(int minimo, int maximo);
@@ -16,3 +17,8 @@ Lista cargarListaEnterosPositivos();
 Pila cargarPilaEnteros();
 int PilaLongitud(Pila p);
 void p_mostrar_con_clave(Pila p);
+
+Cola cargarColaEnteros();
+int ColaLongitud(Cola c);
+void c_mostrar_con_clave(Cola c);
+bool validarColaEj5();

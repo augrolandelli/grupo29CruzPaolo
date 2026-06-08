@@ -240,3 +240,95 @@ void p_mostrar_con_clave(Pila p){
     }
 
 }
+
+
+
+
+Cola cargarColaEnteros(){
+    Cola c = c_crear();
+    int longitud;
+
+    printf("Cuantos elementos tendra la cola? ");
+    longitud = enteroEnRango(0,10);
+
+
+
+    for(int i = 1; i<=longitud; i++){
+        printf("Elemento [%d], ", i);
+        int e = entero();
+        TipoElemento x = te_crear(e);
+        c_encolar(c, x);
+    }
+    return c;
+}
+
+int ColaLongitud(Cola c){
+    int longitud = 0;
+    Cola caux = c_crear();
+    TipoElemento x;
+    while(!c_es_vacia(c)){
+        longitud++;
+        x = c_desencolar(c);
+        c_encolar(caux,x);
+    }
+    while(!c_es_vacia(caux)){
+        x = c_desencolar(caux);
+        c_encolar(c,x);
+    }
+    return longitud;
+}
+
+void c_mostrar_con_clave(Cola c){
+
+    Cola caux = c_crear();
+    TipoElemento x;
+
+    printf("Contenido de la cola con valores: \n");
+
+    while(!c_es_vacia(c)){
+        x = c_desencolar(c);
+        c_encolar(caux, x);
+        printf(" %s \n", (char*)x->valor);
+    }
+
+    while(!c_es_vacia(caux)){
+        x = c_desencolar(caux);
+        c_encolar(c, x);
+    }
+}
+
+bool validarColaEj5(Cola c){
+    bool valida = true;
+    TipoElemento x, y, z;
+    Cola caux = c_crear();
+    Cola caux2 = c_crear();
+    while(!c_es_vacia(c)){
+        x = c_desencolar(c);
+        c_encolar(caux,x);
+        if(x->clave < 2){
+            valida = false;
+        }
+        int apariciones = 0;
+        while(!c_es_vacia(c)){
+            y = c_desencolar(c);
+            c_encolar(caux2,y);
+            if(x->clave == y->clave){
+                apariciones++;
+            }
+        }
+        while(!c_es_vacia(caux2)){
+            z = c_desencolar(caux2);
+            c_encolar(c,z);
+        }
+        if(apariciones>0){
+            valida = false;
+        }
+
+    }
+    while(!c_es_vacia(caux)){
+        x = c_desencolar(caux);
+        c_encolar(c,x);
+    }
+
+    return valida;
+}
