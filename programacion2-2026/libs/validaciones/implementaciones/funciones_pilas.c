@@ -214,4 +214,3 @@ void ejercicio8(){
     printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^3)      ===\n");
     printf("|========================================================|\n");
 }
-

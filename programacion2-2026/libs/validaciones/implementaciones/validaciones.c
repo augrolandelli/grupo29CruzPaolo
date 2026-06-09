@@ -188,6 +188,15 @@ Lista cargarListaEnterosPositivos(){
     return l;
 }
 
+void l_mostrar_con_valor(Lista l){
+    TipoElemento x;
+    Iterador it = iterador(l);
+    while(hay_siguiente(it)){
+        x = siguiente(it);
+        printf(" %d:%s ", x->clave, (char*)x->valor);
+    }
+}
+
 Pila cargarPilaEnteros(){
     Pila p = p_crear();
     int longitud;

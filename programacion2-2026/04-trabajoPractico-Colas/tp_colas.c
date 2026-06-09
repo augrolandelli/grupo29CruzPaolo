@@ -150,23 +150,31 @@ Cola c_ej2_invertir(Cola c){
  */
 // retorna true si son exactamente iguales, caso contrario retorna false.
 bool c_ej3_iguales(Cola c1, Cola c2){
-    bool iguales = true;
-    int long1 = ColaLongitud(c1);
-    int long2 = ColaLongitud(c2);
-    if(long1 != long2){
+    if(ColaLongitud(c1) != ColaLongitud(c2)){
         return false;
     }
-    TipoElemento x,y;
 
-    for(int i = 0; i<long1 ; i++){
+    Cola c_aux = c_crear();
+    TipoElemento x, y;
+    bool iguales = true;
+
+    while(!c_es_vacia(c1)){
         x = c_desencolar(c1);
         y = c_desencolar(c2);
         if(x->clave != y->clave){
             iguales = false;
         }
-        c_encolar(c1,x);
-        c_encolar(c2,y);
+        c_encolar(c_aux, x);
+        c_encolar(c_aux, y);
     }
+
+    while(!c_es_vacia(c_aux)){
+        x = c_desencolar(c_aux);
+        c_encolar(c1, x);
+        y = c_desencolar(c_aux);
+        c_encolar(c2, y);
+    }
+
     return iguales;
 }
 
@@ -282,7 +290,45 @@ Cola c_ej5_divisortotal(Cola c){
  */
 // retornar una lista con los valores comunes segun las especificaciones del ejercicio.
 // Si no existen valores comunes retornar la lista vacia.
-Lista c_ej6_comunesapilaycola(Pila p, Cola c);
+Lista c_ej6_comunesapilaycola(Pila p, Cola c)
+{
+    Pila p_aux = p_crear();
+    Cola c_aux = c_crear();
+    Lista final = l_crear();
+    TipoElemento x, y;
+    int pos_p = 0;
+    int pos_c = 0;
+
+    //la pila la lee de manera inversa. Mirar EJEMPLO DEL PDF
+    while(!p_es_vacia(p)){
+        p_apilar(p_aux, p_desapilar(p));
+    }
+
+    while (!p_es_vacia(p_aux)) {
+        x = p_desapilar(p_aux);
+        pos_p ++;
+        while (!c_es_vacia(c)) {
+            y = c_desencolar(c);
+            pos_c++;
+            if (x->clave == y->clave) {
+                TipoElemento z = te_crear(x->clave);
+                char* txt = (char*) malloc(sizeof(char) * 10);
+                sprintf(txt ,"%i:%i", pos_p, pos_c);
+                z->valor = txt;
+                l_agregar(final, z);
+            }
+            c_encolar(c_aux, y);
+        }
+        //Restauro la cola original
+        while(!c_es_vacia(c_aux)){
+            c_encolar(c, c_desencolar(c_aux));
+        }
+        pos_c = 0;
+        p_apilar(p, x);
+    }
+
+    return final;
+}
 
 
 /**

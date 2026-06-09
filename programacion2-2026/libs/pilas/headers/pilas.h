@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "../../tipoElemento/headers/tipo_elemento.h"
 
-#define TAMANIO_MAXIMO 10
+//define TAMANIO_MAXIMO_PILA 10
 
 struct PilaRep;
 typedef struct PilaRep *Pila;

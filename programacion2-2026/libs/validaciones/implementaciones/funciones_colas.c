@@ -16,7 +16,7 @@ int printMenu(){
     printf("|6) Valores comunes entre cola y pila |\n");
     printf("|7) Colas en el negocio               |\n");
     printf("|=====================================|\n");
-    int n = enteroEnRango(1, 8);
+    int n = enteroEnRango(1, 7);
     printf("\n\n");
     return n;
 }
@@ -35,7 +35,7 @@ void ejercicio2(){
     }else{
         printf("No se encontro la clave en la cola!");
     }
-    printf("\n\n(Cola Original)\t");
+    printf("\n\n(Cola Original)\n");
     c_mostrar(c);
 
     //B
@@ -65,7 +65,7 @@ void ejercicio2(){
     c_mostrar(c);
 
     //D
-    printf("\n\ne) Contar los elementos de la cola.\n");
+    printf("\n\nd) Contar los elementos de la cola.\n");
     int elementos = c_ej2_contarelementos(c);
 
     printf("\nLa cola tiene %d elementos!\n\n(Cola Original)\n", elementos);
@@ -79,7 +79,7 @@ void ejercicio2(){
     c_mostrar(c);
 
     //F
-    printf("\n\nF) Invertir el contenido de la cola.\n");
+    printf("\n\nf) Invertir el contenido de la cola.\n");
     Cola colaF = c_ej2_invertir(c);
     c_mostrar(colaF);
     printf("\n\n(Cola Original)\n");
@@ -93,8 +93,10 @@ void ejercicio3(){
     printf("|=================     EJERCICIO 3     ==================|\n");
     printf("|=== DETERMINAR SI DOS COLAS SON EXACTAMENTE IGUALES  ===|\n");
 
+    printf("\n(Cola 1)\n");
     Cola c1 = cargarColaEnteros();
     c_mostrar(c1);
+    printf("\n(Cola 2)\n");
     Cola c2 = cargarColaEnteros();
     c_mostrar(c2);
 
@@ -112,7 +114,7 @@ void ejercicio3(){
     c_mostrar(c2);
 
 
-    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->        ===\n");
+    printf("\n\n===          COMPLEJIDAD ALGORITMICA --> O(n)       ===\n");
     printf("\n|========================================================|\n");
 
 }
@@ -120,6 +122,8 @@ void ejercicio3(){
 
 void ejercicio4(){
     printf("|===================   EJERCICIO 4  ===================|\n");
+    printf("|===============   COLA SIN REPETIDOS  ================|\n");
+    printf("\n(Cola)\n");
     Cola c = cargarColaEnteros();
     c_mostrar(c);
 
@@ -131,13 +135,15 @@ void ejercicio4(){
     printf("\n(Cola Original)\n");
     c_mostrar(c);
 
-    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->        ===\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA --> O(n^2)    ===\n");
     printf("\n|========================================================|\n");
 
 }
 
 void ejercicio5(){
     printf("|=================     EJERCICIO 5     ==================|\n");
+    printf("|===========   DIVISORES TOTALES O PARCIALES ============|\n");
+    printf("\n(Cola)\n");
     Cola c = cargarColaEnteros();
     c_mostrar(c);
     if (!validarColaEj5(c)) {
@@ -166,32 +172,50 @@ void ejercicio5(){
         }
     }
 
-    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->        ===\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^2)   ===\n");
     printf("\n|========================================================|\n");
 
 }
 
 void ejercicio6(){
     printf("|=================     EJERCICIO 6     ==================|\n");
+    printf("|============ COMUNES ENTRE PILAS Y COLAS ===============|\n");
 
+    printf("\n(Pila)\n");
+    Pila p = cargarPilaEnteros();
+    p_mostrar(p);
+    printf("\n(Cola)\n");
+    Cola c = cargarColaEnteros();
+    c_mostrar(c);
+    Lista Resultado = c_ej6_comunesapilaycola(p, c);
 
-    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->        ===\n");
+    printf("\n(Resultado)\n");
+    l_mostrar_con_valor(Resultado);
+
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n^2)   ===\n");
     printf("\n|========================================================|\n");
 }
 
 void ejercicio7(){
     printf("|=================     EJERCICIO 7     ==================|\n");
+    printf("|===============   ATENDIENDO CLIENTES   ================|\n");
+    printf("\n(COLA 1)\n");
     Cola c1 = cargarColaEnteros();
     c_mostrar(c1);
+    printf("\n(COLA 2)\n");
     Cola c2 = cargarColaEnteros();
     c_mostrar(c2);
+    printf("\n(COLA 3)\n");
     Cola c3 = cargarColaEnteros();
     c_mostrar(c3);
-    Cola res = c_ej7_atenderclientes(c1,c2,c3,10);
+    printf("(Tiempo De Atencion Al Cliente)\n");
+    int tiempoAtencion = enteroPositivo();
+    Cola res = c_ej7_atenderclientes(c1,c2,c3,tiempoAtencion);
 
+    printf("\n(Resultado)\n");
     c_mostrar_con_clave(res);
 
-    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->        ===\n");
+    printf("\n\n===        COMPLEJIDAD ALGORITMICA -->  O(n)       ===\n");
     printf("\n|========================================================|\n");
 }
 

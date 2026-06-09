@@ -13,6 +13,7 @@ void pedirConjunto(int conjunto[], int *tamano);
 int pedirNumeroNatural(char *mensaje);
 Lista cargarListaEnteros();
 Lista cargarListaEnterosPositivos();
+void l_mostrar_con_valor(Lista l);
 
 Pila cargarPilaEnteros();
 int PilaLongitud(Pila p);
