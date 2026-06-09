@@ -35,8 +35,6 @@ void ejercicio2(){
     }else{
         printf("No se encontro la clave en la cola!");
     }
-    printf("\n\n(Cola Original)\n");
-    c_mostrar(c);
 
     //B
     printf("\n\nb) Agregar una clave dada en una posicion dada.\n");
@@ -48,10 +46,6 @@ void ejercicio2(){
     Cola colaB = c_ej2_colarelemento(c, posicion, te_crear(claveInsertar));;
     c_mostrar(colaB);
 
-    printf("\n\n(Cola Original)\n");
-    c_mostrar(c);
-
-
 
     //C
     printf("\n\nc) Sacar todas las ocurrencias de una clave de la cola.\n");
@@ -60,9 +54,6 @@ void ejercicio2(){
 
     Cola colaC = c_ej2_sacarelemento(c,claveEliminar);
     c_mostrar(colaC);
-
-    printf("\n\n(Cola Original)\n");
-    c_mostrar(c);
 
     //D
     printf("\n\nd) Contar los elementos de la cola.\n");
@@ -75,8 +66,6 @@ void ejercicio2(){
     printf("\n\ne) Realizar una copia de la cola.\n");
     Cola colaE = c_ej2_copiar(c);
     c_mostrar(colaE);
-    printf("\n\n(Cola Original)\n");
-    c_mostrar(c);
 
     //F
     printf("\n\nf) Invertir el contenido de la cola.\n");
