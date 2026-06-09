@@ -209,7 +209,7 @@ void ejercicio7(){
     Cola c3 = cargarColaEnteros();
     c_mostrar(c3);
     printf("(Tiempo De Atencion Al Cliente)\n");
-    int tiempoAtencion = enteroPositivo();
+    int tiempoAtencion = enteroMayorQue0();
     Cola res = c_ej7_atenderclientes(c1,c2,c3,tiempoAtencion);
 
     printf("\n(Resultado)\n");
