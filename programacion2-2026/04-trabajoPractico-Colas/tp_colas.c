@@ -30,7 +30,6 @@ bool c_ej2_existeclave(Cola c, int clave){
 //  b.	Agregar un nuevo elemento en una posición dada (colarse).
 // Retorna la nueva cola con el elemento insertado, caso contrario la cola original recibida.
 Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
-    Cola cb = c_crear();
     int contador = 1;
     Cola caux = c_crear(); //para almacenar lo de cola con el nuevo elemento ya agregado
     Cola caux2 = c_crear(); //para volver la original
@@ -52,14 +51,10 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
     }
     while(!c_es_vacia(caux)){
         y = c_desencolar(caux);
-        c_encolar(cb,y);
-    }
-    while(!c_es_vacia(caux2)){
-        y = c_desencolar(caux2);
         c_encolar(c,y);
     }
 
-    return cb;
+    return c;
 }
 
 //  c.	Dado un elemento sacarlo de la cola todas las veces que aparezca.
@@ -68,22 +63,20 @@ Cola c_ej2_sacarelemento(Cola c, int clave){
     if(c_es_vacia(c)){
         return c;
     }
-    Cola res = c_crear();
     Cola caux = c_crear();
     TipoElemento x;
 
     while(!c_es_vacia(c)){
         x = c_desencolar(c);
         c_encolar(caux,x);
-        if(x->clave != clave){
-            c_encolar(res,x);
-        }
     }
     while(!c_es_vacia(caux)){
         x = c_desencolar(caux);
-        c_encolar(c,x);
+        if(x->clave != clave){
+            c_encolar(c,x);
+        }
     }
-    return res;
+    return c;
 }
 
 //  d.	Contar los elementos de la cola.
