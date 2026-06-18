@@ -1,6 +1,7 @@
 #include "../../listas/headers/listas.h"
 #include "../../pilas/headers/pilas.h"
 #include "../../colas/headers/colas.h"
+#include "../../arboles/headers/arbol_binario.h"
 
 int entero();
 int enteroEnRango(int minimo, int maximo);
@@ -23,3 +24,7 @@ Cola cargarColaEnteros();
 int ColaLongitud(Cola c);
 void c_mostrar_con_clave(Cola c);
 bool validarColaEj5();
+
+bool ingresarEntero(int* n);
+void cargarArbolBinario(ArbolBinario A);
+void cargarSubArbol(ArbolBinario A, NodoArbol N, int sa);

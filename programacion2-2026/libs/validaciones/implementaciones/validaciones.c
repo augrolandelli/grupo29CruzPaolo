@@ -341,3 +341,47 @@ bool validarColaEj5(Cola c){
 
     return valida;
 }
+
+bool ingresarEntero(int* n){
+    char s[10];
+    bool res = true;
+    *n = 0;
+    printf("Ingrese una clave numerica o '.' para null: ");
+    scanf("%s", s);
+    if(s[0] == '.'){
+        res = false;
+    }else{
+        for(int i = 0; s[i] != '\0'; i++){
+            if((s[i]>='0')&&(s[i]<='9')){
+                *n = *n * 10 + (s[i] - 48);
+            }
+        }
+    }
+    return res;
+}
+
+void cargarSubArbol(ArbolBinario A, NodoArbol N, int sa){
+    TipoElemento x;
+    NodoArbol n1;
+    int n;
+    bool b;
+    if(!a_es_lleno(A)){
+        b = ingresarEntero(&n);
+        if(b){
+            x = te_crear(n);
+            if(sa == -1){
+                n1 = a_conectar_hi(A, N, x);
+            }else if(sa == 1){
+                n1 = a_conectar_hd(A, N, x);
+            }else{
+                n1 = a_establecer_raiz(A, x);
+            }
+            cargarSubArbol(A, n1, -1);
+            cargarSubArbol(A, n1, 1);
+        }
+    }
+}
+
+void cargarArbolBinario(ArbolBinario A){
+    cargarSubArbol(A,NULL, 0);
+}
