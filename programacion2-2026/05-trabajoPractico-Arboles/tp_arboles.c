@@ -42,7 +42,57 @@ Lista a_ej2_interiores(ArbolBinario A){
 }
 
 //  c.	Buscar todas las ocurrencias de una clave dentro del árbol. Retornar la posición de cada ocurrencia (puntero al nodo).
-Lista a_ej2_buscarclave(ArbolBinario A, int clave);
+void aux_buscarclave(NodoArbol Q, Lista res, int clave){
+    if(!a_es_rama_nula(Q)){
+        if(n_recuperar(Q)->clave == clave){
+            TipoElemento z = te_crear_con_valor(n_recuperar(Q)->clave, n_recuperar(Q)->valor);
+            l_agregar(res, z);
+        }
+        aux_buscarclave(n_hijoizquierdo(Q), res, clave);
+        aux_buscarclave(n_hijoderecho(Q), res, clave);
+    }
+}
+Lista a_ej2_buscarclave(ArbolBinario A, int clave){
+    if(a_es_vacio(A))
+        return l_crear();
+    Lista l_res = l_crear();
+    aux_buscarclave(a_raiz(A), l_res, clave);
+    return l_res;
+}
+
+// e.	Calcular la altura de su rama (Altura del Subárbol)
+void aux_alturarama(NodoArbol Q, int clave, int contador, int* altura){
+    if(!a_es_rama_nula(Q)){
+        if(n_recuperar(Q)->clave == clave)
+            *altura = contador;
+        aux_alturarama(n_hijoizquierdo(Q), clave, contador+1, altura);
+        aux_alturarama(n_hijoderecho(Q), clave, contador+1, altura);
+    }
+}
+int a_ej3_alturarama(ArbolBinario A, int clave){
+    if(a_es_vacio(A))
+        return 0;
+    int altura = 0;
+    aux_alturarama(a_raiz(A), clave, 1, &altura);
+    return altura;
+}
+
+// f.	Listar todos los nodos que están en el mismo nivel (solo la clave).
+void aux_clavesmismonivel(NodoArbol Q, int nivel, Lista res, int nivel_actual){
+    if(!a_es_rama_nula(Q)){
+        if(nivel_actual == nivel)
+            l_agregar(res, n_recuperar(Q));
+        aux_clavesmismonivel(n_hijoizquierdo(Q), nivel, res, nivel_actual+1);
+        aux_clavesmismonivel(n_hijoderecho(Q), nivel, res, nivel_actual+1);
+    }
+}
+Lista a_ej3_clavesmismonivel(ArbolBinario A, int nivel){
+    if(a_es_vacio(A))
+        return l_crear();
+    Lista l_resultado = l_crear();
+    aux_clavesmismonivel(a_raiz(A), nivel, l_resultado, 0);
+    return l_resultado;
+}
 
 
 /**
@@ -189,7 +239,30 @@ bool a_ej4_similares(ArbolBinario A, ArbolBinario B){
 }
 
 // d.	Retornar el padre de un nodo del árbol (tipo_elemento).
-TipoElemento a_ej4_padre(ArbolBinario A, int clave);
+bool padre(NodoArbol n, int clave, TipoElemento* p)
+{
+    if (!a_es_rama_nula(n)) {
+        TipoElemento x = n_recuperar(n);
+        if (x->clave == clave) {
+            return true;
+        } else {
+            if (padre(n_hijoizquierdo(n), clave, p)) {
+                TipoElemento x = n_recuperar(n);
+                *p = x;
+                return false;
+            }
+            return (padre(n_hijoderecho(n), clave, p));
+        }
+    }
+    return false;
+}
+TipoElemento a_ej4_padre(ArbolBinario A, int clave)
+{
+    NodoArbol n = a_raiz(A);
+    TipoElemento x = te_crear(-1);
+    padre(n, clave, &x);
+    return x;
+}
 
 // e.	Retornar los hermanos de un nodo del árbol (lista de hermanos).
 void listarHermanoCompleto(NodoArbol n, int clave, Lista hermanos){
@@ -254,16 +327,100 @@ bool a_ej7_equivalente(ArbolBinario A, ArbolBinario B){
 8.	Dado un árbol “n-ario” se pide:
  */
 // a.	Determinar la altura del mismo.
-int a_ej8_altura(ArbolBinario A);
+void altura(NodoArbol n, int* h, int i)
+{
+    if (!a_es_rama_nula(n)) {
+        if (i > *h) {
+            *h = i;
+        }
+        altura(n_hijoizquierdo(n), h, i+1);
+        altura(n_hijoderecho(n), h, i);
+    }
+}
+
+int a_ej8_altura(ArbolBinario A)
+{
+    NodoArbol n = a_raiz(A);
+    int h = -1;
+    if (n != NULL) {
+        h = 0;
+    }
+    altura(n, &h, 0);
+    return h;
+}
 
 // b.	Determinar el nivel de un nodo.
-int a_ej8_nivel(ArbolBinario A, int clave);
+void nivel(NodoArbol n, int clave, int* r, int h)
+{
+    if (!a_es_rama_nula(n) && *r == -1) {
+        TipoElemento x = n_recuperar(n);
+        if (clave == x->clave) {
+            *r = h;
+            return;
+        }
+        nivel(n_hijoizquierdo(n), clave, r, h + 1);
+        nivel(n_hijoderecho(n), clave, r, h);
+    }
+}
+
+int a_ej8_nivel(ArbolBinario A, int clave)
+{
+    NodoArbol n = a_raiz(A);
+    int n_actual = -1;
+    nivel(n, clave, &n_actual, 0);
+    return n_actual;
+}
 
 // c.	Listar todos los nodos internos (solo las claves).
 Lista a_ej8_internos(ArbolBinario A);
+void internos(NodoArbol n, Lista l)
+{
+    if (!a_es_rama_nula(n)) {
+        if (!a_es_rama_nula(n_hijoizquierdo(n))) {
+            TipoElemento x = n_recuperar(n);
+            l_agregar(l, x);
+        }
+        internos(n_hijoizquierdo(n), l);
+        internos(n_hijoderecho(n), l);
+    }
+}
+
+Lista a_ej8_internos(ArbolBinario A){
+    NodoArbol n = a_raiz(A);
+    Lista l = l_crear();
+    internos(n_hijoizquierdo(n), l);
+    return l;
+}
 
 // d.	Determinar si todas las hojas están al mismo nivel.
-bool a_ej8_hojasmismonivel(ArbolBinario A);
+void mismonivel(NodoArbol n, bool* mismoniv, int* h, int n_actual)
+{
+    if (*mismoniv == false) return;
+
+    if (!a_es_rama_nula(n)) {
+        if (a_es_rama_nula(n_hijoizquierdo(n))) {
+            if (*h == -1) {
+                *h = n_actual;
+            } else {
+                if (*h != n_actual) {
+                    *mismoniv = false;
+                    return;
+                }
+            }
+        }
+        mismonivel(n_hijoizquierdo(n), mismoniv, h, n_actual + 1);
+        mismonivel(n_hijoderecho(n), mismoniv, h, n_actual);
+    }
+}
+
+bool a_ej8_hojasmismonivel(ArbolBinario A)
+{
+    NodoArbol n = a_raiz(A);
+    bool mismoniv = true;
+    int h = -1;
+    mismonivel(n, &mismoniv, &h, 0);
+    return mismoniv;
+}
 
 
 /**
@@ -272,8 +429,43 @@ bool a_ej8_hojasmismonivel(ArbolBinario A);
 	Comparar las alturas de ambos árboles. Determinar la complejidad algorítmica.
  */
 // Primero llamamos para construir el AVL
-ArbolAVL a_ej9_construiravl(ArbolBinario A);
+void binario_a_avl(NodoArbol n, ArbolAVL AVL)
+{
+    if (!a_es_rama_nula(n)) {
+        TipoElemento x = n_recuperar(n);
+        avl_insertar(AVL, x);
+        binario_a_avl(n_hijoizquierdo(n), AVL);
+        binario_a_avl(n_hijoderecho(n), AVL);
+    }
+}
+
+ArbolAVL a_ej9_construiravl(ArbolBinario A)
+{
+    ArbolAVL AVL = avl_crear();
+    NodoArbol n = a_raiz(A);
+    binario_a_avl(n, AVL);
+    return AVL;
+}
 
 // Luego con el resultado de la funcion anterior llamamos a una funcion para que nos retorne la diferencia de las alturas
 // comparadas como Altura(ArbolBinario) - Altura(ArbolAVL).
-int a_ej9_diferenciaalturas(ArbolBinario A, ArbolAVL AVL);
+void calcularaltura(NodoArbol n, int* altura, int altura_actual)
+{
+    if (n != NULL) {
+        if (altura_actual > *altura) {
+            *altura = altura_actual;
+        }
+        calcularaltura(n_hijoizquierdo(n), altura, altura_actual+1);
+        calcularaltura(n_hijoderecho(n), altura, altura_actual+1);
+    }
+}
+
+int a_ej9_diferenciaalturas(ArbolBinario A, ArbolAVL AVL)
+{
+    NodoArbol n = a_raiz(A);
+    NodoArbol m = avl_raiz(AVL);
+    int h_b = -1, h_avl = -1;
+    calcularaltura(n, &h_b, 0);
+    calcularaltura(m, &h_avl, 0);
+    return h_b - h_avl;
+}
