@@ -55,7 +55,7 @@ void ejercicio2(){
 
 void ejercicio3(){
     printf("|=================     EJERCICIO 3     ==================|\n");
-    printf("|===========     EJERCICIOS CON UN NODO      ============|\n");
+    printf("|===========     EJERCICIOS CON UN NODO      ============|\n\n");
 
     ArbolBinario a = a_crear();
     cargarArbolBinario(a);
@@ -65,7 +65,7 @@ void ejercicio3(){
     printf("\na)Indicar el nombre del nodo padre (clave).\n");
     int padre = a_ej3_clavepadre(a, nodoClave);
     if(padre == -1){
-        printf("El nodo no existe");
+        printf("El nodo no existe\n");
     }else{
         printf("Clave del padre: %d\n", padre);
 
@@ -97,6 +97,7 @@ void ejercicio3(){
 
     }
 
+    //E
     printf("\ne)Devuelve la Altura en el que se encuentra el nodo.\n");
     int altura = a_ej3_alturarama(a, nodoClave);
     if(hermano == -1)
@@ -117,13 +118,21 @@ void ejercicio3(){
 void ejercicio4(){
     printf("|===================   EJERCICIO 4  ===================|\n");
     printf("|=============   EJERCICIOS CON N-ARIOS  ==============|\n");
+
     printf("\n(Arbol)\n ");
     ArbolBinario a = a_crear();
     cargarArbolBinario(a);
 
-    int hojas = a_ej4_q_hojas(a);
-    printf("\nb)Cantidad de hojas del arbol: %d\n\n", hojas);
+    //A
+    printf("\n\na)Devolver una lista con las claves de los nodos en un recorrido de enchura.\n");
+    Lista res_a = a_ej4_anchura(a);
+    l_mostrar(res_a);
 
+    //B
+    int hojas = a_ej4_q_hojas(a);
+    printf("\nb)Cantidad de hojas del arbol: %d\n", hojas);
+
+    //C
     printf("\nc)Determinar si el arbol ingresado y otro son similares: \n");
     printf("(Arbol a comparar)\n");
     ArbolBinario b = a_crear();
@@ -131,18 +140,23 @@ void ejercicio4(){
 
     bool res = a_ej4_similares(a,b);
     if(res){
-        printf("\nLos arboles SON similares\n");
+        printf("########## Los arboles SON similares ##########\n");
     }else{
-        printf("\nLos arboles NO SON similares\n");
+        printf("########## Los arboles NO SON similares ##########\n");
     }
 
+    //D
     printf("\nd)Retornar el padre de un nodo del arbol: \n");
     printf("(Clave del nodo a buscar su padre)\n");
     int claveNodo = entero();
     TipoElemento padre = a_ej4_padre(a, claveNodo);
-    printf("\nLa clave del padre es: %d\n", padre->clave);
-
-
+    if(padre->clave != -1){
+        printf("########## La clave del padre es: %d ##########\n", padre->clave);
+    }else{
+        printf("########## La clave del padre no existe ##########\n");
+    }
+    
+    //E
     printf("\ne)Determinar hermanos de un nodo: \n");
     printf("(Clave del nodo a listar hermanos)\t");
     int clave = entero();
@@ -161,7 +175,7 @@ void ejercicio5(){
 
     printf("|====   (05-trabajoPractico-Arboles/ejercicio5)     ====|\n");
 
-    printf("\n|=====================================================|\n");
+    printf("\n|=======================================================|\n");
 
 }
 
@@ -172,25 +186,25 @@ void ejercicio6(){
     printf("|=======    IMAGENES SUBIDAS AL REPOSITORIO     ========|\n");
     printf("|====   (05-trabajoPractico-Arboles/ejercicio6)     ====|\n");
 
-    printf("\n|=====================================================|\n");
+    printf("\n|=======================================================|\n");
 
 }
 
 void ejercicio7(){
     printf("|=================     EJERCICIO 7     ==================|\n");
     printf("|===========     EJERCICIOS CON UN NODO      ============|\n");
-    printf("(Arbol A)\n");
+    printf("\n(Arbol A)\n");
     ArbolBinario a = a_crear();
     cargarArbolBinario(a);
-    printf("(Arbol B)\n");
+    printf("\n(Arbol B)\n");
     ArbolBinario b = a_crear();
     cargarArbolBinario(b);
 
     bool res = a_ej7_equivalente(a,b);
     if(res){
-        printf("SON EQUIVALENTES\n");
+        printf("\n#################### SON EQUIVALENTES ####################\n");
     }else{
-        printf("NO SON EQUIVALENTES\n");
+        printf("\n#################### NO SON EQUIVALENTES ####################\n");
     }
 
     printf("\n|========================================================|\n");
@@ -199,30 +213,43 @@ void ejercicio7(){
 void ejercicio8(){
     printf("|=================     EJERCICIO 8     ==================|\n");
     printf("|==============   EJERCICIOS CON N-ARIO   ===============|\n");
-    printf("(Arbol)\n");
+
+    printf("\n(Arbol)\n");
     ArbolBinario a = a_crear();
     cargarArbolBinario(a);
 
+    //A
     printf("\na)Determinar la altura del arbol.\n");
     int altura =  a_ej8_altura(a);
-    printf("La altura del arbol es: %d\n", altura);
+    if(altura != -1){
+        printf("########## La altura del arbol es: %d ##########\n", altura);
+    }else{
+        printf("########## La altura del arbol no existe ##########\n");
+    }
 
+    //B
     printf("\nb)Determinar el nivel de un nodo.\n");
     printf("(Clave del nodo)\t");
     int claveNodo = entero();
     int nivelNodo = a_ej8_nivel(a, claveNodo);
-    printf("El nodo esta en el nivel: %d.\n", nivelNodo);
-
+    if(nivelNodo != -1){
+        printf("########## El nodo esta en el nivel: %d ##########\n", nivelNodo);
+    }else{
+        printf("########## El nodo no existe ##########\n");
+    }
+    
+    //C
     printf("\nc)Listar todos los nodos internos.\n");
     Lista internos = a_ej8_internos(a);
     l_mostrar(internos);
 
+    //D
     printf("\nd)Determinar si todas las hojas estan al mismo nivel.\n");
     bool mismoNivel = a_ej8_hojasmismonivel(a);
     if(mismoNivel){
-        printf("Todas las hojas estan al mismo nivel!.\n");
+        printf(" ########## Todas las hojas estan al mismo nivel! ##########\n");
     }else{
-        printf("No todas las hojas estan al mismo nivel.\n");
+        printf("########## No todas las hojas estan al mismo nivel ##########\n");
     }
     printf("\n|========================================================|\n");
 }
@@ -231,6 +258,7 @@ void ejercicio9(){
     printf("|=================     EJERCICIO 9     ==================|\n");
     printf("|============      EJERCICIO CON  A.V.L      ============|\n");
     printf("|=  Transformar arbol binario en avl y comparar altura  =|\n");
+
     printf("\n(Arbol BINARIO a convertir en avl)\n");
     ArbolBinario a = a_crear();
     cargarArbolBinario(a);
@@ -240,8 +268,8 @@ void ejercicio9(){
     // Luego con el resultado de la funcion anterior llamamos a una funcion para que nos retorne la diferencia de las alturas
     // comparadas como Altura(ArbolBinario) - Altura(ArbolAVL).
     int difAlturas = a_ej9_diferenciaalturas(a, avl);
-    printf("\nLa diferencia de alturas entre ambos arboles es: %d\n", difAlturas);
-
+    printf("\n########## La diferencia de alturas entre ambos arboles es: %d ##########\n", difAlturas);
+    printf("Complejidad Algoritmica: O(n)\n");
 
     printf("\n|========================================================|\n");
 }
