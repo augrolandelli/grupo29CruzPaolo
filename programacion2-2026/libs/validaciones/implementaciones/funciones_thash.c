@@ -6,7 +6,7 @@
 
 int printMenu(){
     printf("|=========================================|\n");
-    printf("|       BIENVENIDOS AL TP DE ARBOLES      |\n");
+    printf("|       BIENVENIDOS AL TP DE T-HASH       |\n");
     printf("|1) Salir                                 |\n");
     printf("|2) Construir tabla h(x) = x mod 10       |\n");
     printf("|3) Construir tabla h(x) = (4+3(x))mod 10 |\n");
