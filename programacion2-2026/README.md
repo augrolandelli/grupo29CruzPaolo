@@ -8,13 +8,13 @@ Curso de Programación 2, Universidad Nacional de Lujan
 ##### Perello Mario – Profesor Adjunto
 ##### Racker José – Ayudante de 1era
 ##### Reinaudi Claudia – Ayudante de 1era
-## N° de grupo: 99
+## N° de grupo: 29
 ## Alumnos:
 
 Apellido y Nombre // Legajo // Mails
 ##### Rolandelli Augusto // 187439 // rolandelli_augus@hmail.com
-##### Cruz Paolo // 187439 // mail
-##### Valiente Nadia // 169789 // mail
+##### Cruz Paolo // 187439 // cruzpaolo299@gmail.com
+##### Rodriges Melina // 200855 // rodriguezmelina2017@gmail.com
 ##### Guillotto Ana // 195150 // mail
 ##### Vita Luciano // 200846 // mail
 ##### Almar Ramiro // 203362 // mail
