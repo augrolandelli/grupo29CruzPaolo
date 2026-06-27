@@ -9,11 +9,11 @@
 #define TAM_TABLA 2000
 #define PRIMO_HASH 1999
 
-/**
-4. Desarrollar un algoritmo que dado un archivo que contendrá los datos de alumnos  (legajo, apellido, nombres, domicilio, TE)
-   genere una tabla hash donde la clave será el legajo y se guardará como dato la posición física
+/** 
+4. Desarrollar un algoritmo que dado un archivo que contendrï¿½ los datos de alumnos  (legajo, apellido, nombres, domicilio, TE)
+   genere una tabla hash donde la clave serï¿½ el legajo y se guardarï¿½ como dato la posiciï¿½n fï¿½sica
    del registro para realizar accesos directos.
-   Hacer un ABM para poder cargar manualmente el archivo.  El “legajo" es un valor de 6 dígitos.
+   Hacer un ABM para poder cargar manualmente el archivo.  El ï¿½legajo" es un valor de 6 dï¿½gitos.
 */
 typedef struct {
     int legajo;
@@ -73,6 +73,77 @@ void alta_alumno(TablaHash tabla, FILE *archivo) {
     printf("Alumno guardado con exito en el registro %d.\n", pos_fisica);
 }
 
+void baja_alumno(TablaHash tabla, FILE *archivo) {
+    int legajo;
+
+    printf("\n--- BAJA DE ALUMNO ---\n");
+    printf("Ingrese el legajo: ");
+    scanf("%d", &legajo);
+
+    TipoElemento te = th_recuperar(tabla, legajo);
+
+    if (te == NULL) {
+        printf("No existe un alumno con ese legajo.\n");
+        return;
+    }
+
+    int pos = *((int *) te->valor);
+
+    Alumno alumno;
+
+    fseek(archivo, pos * sizeof(Alumno), SEEK_SET);
+    fread(&alumno, sizeof(Alumno), 1, archivo);
+
+    if (!alumno.activo) {
+        printf("El alumno ya estaba dado de baja.\n");
+        return;
+    }
+
+    alumno.activo = false;
+
+    fseek(archivo, pos * sizeof(Alumno), SEEK_SET);
+    fwrite(&alumno, sizeof(Alumno), 1, archivo);
+    fflush(archivo);
+
+    th_eliminar(tabla, legajo);
+
+    printf("Alumno dado de baja correctamente.\n");
+}
+
+void buscar_alumno(TablaHash tabla, FILE *archivo) {
+    int legajo;
+
+    printf("\n--- CONSULTA DE ALUMNO ---\n");
+    printf("Ingrese el legajo: ");
+    scanf("%d", &legajo);
+
+    TipoElemento te = th_recuperar(tabla, legajo);
+
+    if (te == NULL) {
+        printf("No existe un alumno con ese legajo.\n");
+        return;
+    }
+
+    int pos = *((int *) te->valor);
+
+    Alumno alumno;
+
+    fseek(archivo, pos * sizeof(Alumno), SEEK_SET);
+    fread(&alumno, sizeof(Alumno), 1, archivo);
+
+    if (!alumno.activo) {
+        printf("El alumno se encuentra dado de baja.\n");
+        return;
+    }
+
+    printf("\n===== DATOS DEL ALUMNO =====\n");
+    printf("Legajo    : %d\n", alumno.legajo);
+    printf("Apellido  : %s\n", alumno.apellido);
+    printf("Nombres   : %s\n", alumno.nombres);
+    printf("Domicilio : %s\n", alumno.domicilio);
+    printf("Telefono  : %s\n", alumno.te);
+}
+
 void th_ej4_abm() {
     TablaHash tabla = th_crear(TAM_TABLA, hash_legajo);
 
@@ -116,16 +187,16 @@ void th_ej4_abm() {
                 alta_alumno(tabla, archivo);
                 break;
             case 2:
-                printf("Funcion de baja en construccion...\n");
+                baja_alumno(tabla, archivo);
                 break;
             case 3:
-                printf("Funcion de consulta en construccion...\n");
+                buscar_alumno(tabla, archivo);
                 break;
             case 4:
-                printf("Guardando y cerrando el sistema...\n");
+                printf("Guardando y cerrando el sistema...\n\n");
                 break;
             default:
-                printf("Opción inválida. Intente nuevamente.\n");
+                printf("Opciï¿½n invï¿½lida. Intente nuevamente.\n\n");
         }
     } while (opcion != 4);
 
@@ -134,12 +205,12 @@ void th_ej4_abm() {
 
 
 /**
-5. Realizar una comparación de los tiempos de accesos a las claves entre un árbol AVL y una Tabla Hash.
+5. Realizar una comparaciï¿½n de los tiempos de accesos a las claves entre un ï¿½rbol AVL y una Tabla Hash.
    El operador debe poder indicarle cuantas claves se deben generar (entre 1 y 2000), cuantas repeticiones
-   se realizaran y cuál es el rango de las claves a generar.
-   Luego se tomarán claves al azar dentro del mismo rango y se buscaran en ambas estructuras.
-   El proceso se repetirá “n” veces (repeticiones a ingresar por el operador).
-   Documentar la conclusión final respecto a los tiempos de accesos de ambas estructuras.
+   se realizaran y cuï¿½l es el rango de las claves a generar.
+   Luego se tomarï¿½n claves al azar dentro del mismo rango y se buscaran en ambas estructuras.
+   El proceso se repetirï¿½ ï¿½nï¿½ veces (repeticiones a ingresar por el operador).
+   Documentar la conclusiï¿½n final respecto a los tiempos de accesos de ambas estructuras.
 */
 int hash_ej5(int clave) {
     return abs(clave) % TAM_TABLA;
@@ -201,11 +272,11 @@ void th_ej5_comparacion(int q_claves, int q_repeticiones, int rango_desde, int r
 }
 
 /**
-6. Se desea poder implementar una solución para encontrar de forma rápida los datos de las personas que a una fecha
+6. Se desea poder implementar una soluciï¿½n para encontrar de forma rï¿½pida los datos de las personas que a una fecha
    determinada se presentaron a vacunar contra el COVID.
-   Es decir dada una fecha determinada debería obtener quienes se vacunaron.
-   De cada persona se guarda básicamente el DNI, Apellido y Nombre.
-   Se debe además hacer una pantalla de carga donde se pueda especificar la fecha y los datos de las personas
+   Es decir dada una fecha determinada deberï¿½a obtener quienes se vacunaron.
+   De cada persona se guarda bï¿½sicamente el DNI, Apellido y Nombre.
+   Se debe ademï¿½s hacer una pantalla de carga donde se pueda especificar la fecha y los datos de las personas
    que se vacunaron en esa fecha.
 */
 typedef struct {
