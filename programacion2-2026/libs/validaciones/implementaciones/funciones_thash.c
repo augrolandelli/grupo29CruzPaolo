@@ -19,6 +19,16 @@ int printMenu(){
     return n;
 }
 
+void ejercicio2(){
+     printf("\n=== EJERCICIO 2: Construir tabla h(x) = x mod 10 ===\n");
+     printf("\n= LA IMAGEN SE ENCUENTRA EN LA CARPETA DEL TRABAJO =\n");
+}
+
+void ejercicio3(){
+     printf("\n= EJERCICIO 3: Construir tabla h(x) = (4+3(x))mod 10 =\n");
+     printf("\n= LA IMAGEN SE ENCUENTRA EN LA CARPETA DEL TRABAJO =\n");
+}
+
 void ejercicio4(){
     th_ej4_abm();
 }
