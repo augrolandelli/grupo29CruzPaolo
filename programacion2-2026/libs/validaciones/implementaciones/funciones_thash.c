@@ -14,7 +14,7 @@ int printMenu(){
     printf("|5) Comparativa en tiempos de acceso      |\n");
     printf("|6) Busqueda de personas vacunadas        |\n");
     printf("|=========================================|\n");
-    int n = enteroEnRango(1, 9);
+    int n = enteroEnRango(1, 6);
     printf("\n\n");
     return n;
 }
