@@ -2,6 +2,7 @@
 #include "../../pilas/headers/pilas.h"
 #include "../../colas/headers/colas.h"
 #include "../../arboles/headers/arbol_binario.h"
+#include "../../conjuntos/headers/conjuntos.h"
 
 int entero();
 int enteroEnRango(int minimo, int maximo);
@@ -28,3 +29,9 @@ bool validarColaEj5();
 bool ingresarEntero(int* n);
 void cargarArbolBinario(ArbolBinario A);
 void cargarSubArbol(ArbolBinario A, NodoArbol N, int sa);
+
+//CONJUNTO
+Conjunto cargarConjuntoEnteros();
+void cargarConjuntoEnLista_con_valor(Lista l);
+bool subConjunto (Conjunto P, Conjunto Q);
+bool esSubconjuntopropio(Conjunto P, Conjunto Q, int cp, int cq);
