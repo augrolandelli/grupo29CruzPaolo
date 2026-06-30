@@ -1,7 +1,7 @@
 #include "../headers/funciones_conjuntos.h"
 #include "../../listas/headers/listas.h"
 #include "../headers/validaciones.h"
-#include "../../../07-trabajoPractico-Conjunto/tp_conjunto.h"
+#include "../../../08-trabajoPractico-Conjuntos/tp_conjunto.h"
 #include <stdio.h>
 #include <stdlib.h>
 
