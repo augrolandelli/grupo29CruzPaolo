@@ -385,3 +385,47 @@ void cargarSubArbol(ArbolBinario A, NodoArbol N, int sa){
 void cargarArbolBinario(ArbolBinario A){
     cargarSubArbol(A,NULL, 0);
 }
+
+// CONJUNTO
+Conjunto cargarConjuntoEnteros(){
+    Conjunto c = cto_crear();
+    int longitud;
+
+    printf("\n\n--- Conjunto ---\n");
+    printf("Cantidad de elementos: ");
+    longitud = enteroEnRango(0,100);
+
+    for(int i = 1; i<=longitud; i++){
+        printf("Elemento [%d], ", i);
+        int e = entero();
+        TipoElemento x = te_crear(e);
+        cto_agregar(c, x);
+    }
+    return c;
+}
+
+void cargarConjuntoEnLista_con_valor(Lista lista){
+    int cantConjuntos;
+    int cantElementos;
+    int clave;
+
+    printf("\nIngrese la cantidad de conjuntos: \n");
+    scanf("%d", &cantConjuntos);
+
+    for (int i = 1; i <= cantConjuntos; i++) {
+
+        Conjunto conjunto = cto_crear();
+        printf("\n--- Conjunto %d ---\n", i);
+        printf("Cantidad de elementos: ");
+        scanf("%d", &cantElementos);
+
+        for (int j = 0; j < cantElementos; j++) {
+            printf("Elemento [%d]: ", j + 1);
+            scanf("%d", &clave);
+            cto_agregar(conjunto, te_crear(clave));
+        }
+
+        TipoElemento te = te_crear_con_valor(i, conjunto);
+        l_agregar(lista, te);
+    }
+}
