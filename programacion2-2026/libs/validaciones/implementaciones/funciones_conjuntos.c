@@ -131,7 +131,14 @@ void ejercicio6(){
 void ejercicio7(){
     printf("|===================== EJERCICIO 7 =====================|\n");
     printf("|============= SUBCONJUNTO TOTAL O PARCIAL =============|\n");
-    printf("\n ########## NO REALIZADO ########## \n");
+    Conjunto A = cargarConjuntoEnteros();
+    Conjunto B = cargarConjuntoEnteros();
+    Conjunto C = cargarConjuntoEnteros();
+
+    c_ej7_subconjtotalparcial(A, B, C);
+
+    printf("\nComplejidad Algoritmica: O(n) donde n es la cantidad de elementos.\n");
+
     printf("\n|=======================================================|\n");
 }
 

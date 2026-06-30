@@ -120,7 +120,31 @@ bool c_ej6_subconjuntopropio(Conjunto A, Conjunto B){
 	Determinar la complejidad algorítmica.
 	Imprimir el resultado en la función.
 */
-void c_ej7_subconjtotalparcial(Conjunto A, Conjunto B, Conjunto C);
+void c_ej7_subconjtotalparcial(Conjunto A, Conjunto B, Conjunto C) {
+    Conjunto conjuntos[3] = {A, B, C};
+    const char* nombres[3] = {"A", "B", "C"};
+
+    //evaluamos de manera a todos contra todos (i contra j)
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            //no se evalua a si mismo ni cjto vacio
+            if (i == j || cto_es_vacio(conjuntos[i])) {
+                continue;
+            }
+
+            int total_i = cto_cantidad(conjuntos[i]);
+            Conjunto comunes = cto_interseccion(conjuntos[i], conjuntos[j]);
+            int cantidad_comunes = cto_cantidad(comunes);
+
+            if (cantidad_comunes == total_i) {
+                printf("\"%s\" es un subconjunto total de \"%s\"\n", nombres[i], nombres[j]);
+            } else if (cantidad_comunes >= ((float)total_i / 2.0)) {
+                printf("\"%s\" es un subconjunto parcial de \"%s\"\n", nombres[i], nombres[j]);
+            }
+        }
+    }
+}    //COMPLEJIDAD ALGORITMICA O(N) LINEAL donde N son las cantidades de elementos
+
 
 
 /**
