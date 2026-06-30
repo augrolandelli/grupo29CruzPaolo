@@ -6,6 +6,7 @@
 #include "../libs/listas/headers/listas.h"
 
 
+
 /**
 2.	Desarrollar un algoritmo que dado dos conjuntos de elementos tipo numérico (clave) 
 	verifique las operaciones de Unión,  Intersección,  Diferencia y Pertenencia. 
@@ -13,8 +14,9 @@
 Conjunto c_ej2_union(Conjunto A, Conjunto B);
 Conjunto c_ej2_interseccion(Conjunto A, Conjunto B);
 Conjunto c_ej2_diferencia(Conjunto A, Conjunto B);
+bool c_ej2_pertenece(Conjunto conjunto, int clave);
 
-
+ 
 /**
 3.	Desarrollar un algoritmo que dada una colección de conjuntos de elementos tipo numérico (clave) 
 	realice las operaciones de Unión e Intersección.
@@ -28,7 +30,7 @@ Conjunto c_ej3_intersecciones(Lista l_de_conjuntos);
 4.	Desarrollar un algoritmo que dado tres conjuntos puedan demostrar la propiedad de la transitividad:  
 	“si A es subconjunto de B y B a su vez es subconjunto de C, entonces A es subconjunto de C”.
 */
-bool c_ej4_transitividad(Conjunto A, Conjunto B, Conjunto C);
+bool c_ej4_transitividad(Conjunto A, Conjunto B, Conjunto C); 
 
 /**
 5.	Desarrollar un algoritmo capaz de resolver la diferencia simétrica (por la clave) entre dos conjuntos. 
